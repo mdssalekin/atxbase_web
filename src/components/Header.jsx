@@ -2,9 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "./assets/logo atx.png";
 
+// Sub-links shown in the Services dropdown (desktop) / accordion (mobile).
+// Route slugs assume each of these lives at /services/<slug> — update the
+// paths here if you're wiring them up differently (e.g. flat routes).
+const SERVICE_LINKS = [
+  { label: "Application Development", path: "/services/application-development" },
+  { label: "System Design", path: "/services/system-design" },
+  { label: "AI & Automation", path: "/services/ai-&-automation" },
+  { label: "Data Science", path: "/services/data-science" },
+  { label: "Digital Marketing", path: "/services/digital-marketing" },
+  { label: "Graphic Design", path: "/services/graphic-design" },
+];
+
 const menuItems = [
   { label: "Home", path: "/" },
-  { label: "Services", path: "/services" },
+  { label: "Services", path: "/services", children: SERVICE_LINKS },
   { label: "About Us", path: "/about-us" },
   { label: "News & Blog", path: "/news&blog" },
   { label: "Contact Us", path: "/contact-us" },
@@ -23,6 +35,7 @@ const TEAL = "#17c3a2";
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const navigate = useNavigate();
   const drawerRef = useRef(null);
 
@@ -45,6 +58,21 @@ const Header = () => {
     };
   }, [mobileOpen]);
 
+  // If the viewport is resized past the desktop breakpoint while the
+  // mobile drawer is open, close it so it can't get stuck open.
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 950px)");
+    const onChange = (e) => e.matches && setMobileOpen(false);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  // Collapse the mobile Services accordion whenever the drawer itself closes,
+  // so it doesn't reopen already-expanded next time.
+  useEffect(() => {
+    if (!mobileOpen) setMobileServicesOpen(false);
+  }, [mobileOpen]);
+
   const goHome = () => {
     navigate("/");
     setMobileOpen(false);
@@ -63,7 +91,7 @@ const Header = () => {
         >
           <div
             className={`
-              relative flex items-center justify-between overflow-hidden 
+              relative flex items-center justify-between overflow-visible 
               transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
 
               ${
@@ -79,7 +107,7 @@ const Header = () => {
               }
             `}
           >
-            {/* logo */}
+            {/* logo — single className drives the size, no inline style fighting it */}
             <button
               onClick={goHome}
               className="flex items-center gap-2 shrink-0"
@@ -97,32 +125,81 @@ const Header = () => {
 
             {/* desktop links */}
             <nav className="hidden min-[950px]:flex items-center gap-1">
-              {menuItems.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  end
-                  className="group relative px-4 py-2 text-[13.5px] font-medium tracking-wide"
-                >
-                  {({ isActive }) => (
-                    <>
-                      <span
-                        className="relative z-10 transition-colors duration-200"
-                        style={{ color: isActive ? INK : "#4b5468" }}
-                      >
-                        {item.label}
-                      </span>
-                      <span
-                        className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-1 h-[2.5px] rounded-full transition-all duration-300"
-                        style={{
-                          width: isActive ? "60%" : "0%",
-                          background: `linear-gradient(90deg, ${BLUE}, ${TEAL})`,
-                        }}
-                      />
-                    </>
-                  )}
-                </NavLink>
-              ))}
+              {menuItems.map((item) =>
+                item.children ? (
+                  <div key={item.path} className="group relative">
+                    <NavLink
+                      to={item.path}
+                      className="relative flex items-center gap-1 px-4 py-2 text-[13.5px] font-medium tracking-wide"
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <span
+                            className="relative z-10 transition-colors duration-200"
+                            style={{ color: isActive ? INK : "#4b5468" }}
+                          >
+                            {item.label}
+                          </span>
+                          <svg
+                            viewBox="0 0 12 8"
+                            className="h-[7px] w-[10px] mt-[1px] transition-transform duration-200 group-hover:rotate-180"
+                            fill="none"
+                          >
+                            <path d="M1 1.5 6 6.5 11 1.5" stroke="#4b5468" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          <span
+                            className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-1 h-[2.5px] rounded-full transition-all duration-300"
+                            style={{
+                              width: isActive ? "60%" : "0%",
+                              background: `linear-gradient(90deg, ${BLUE}, ${TEAL})`,
+                            }}
+                          />
+                        </>
+                      )}
+                    </NavLink>
+
+                    {/* dropdown panel — invisible bridge padding avoids a hover gap flicker */}
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200">
+                      <div className="w-64 rounded-2xl border border-black/5 bg-white shadow-[0_20px_45px_-15px_rgba(10,15,36,0.25)] p-2">
+                        {item.children.map((child) => (
+                          <NavLink
+                            key={child.path}
+                            to={child.path}
+                            className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-[13.5px] font-medium text-[#3a4258] hover:bg-[#f5f7fb] hover:text-[#0a0f24] transition-colors"
+                          >
+                            {child.label}
+                          </NavLink>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    end
+                    className="group relative px-4 py-2 text-[13.5px] font-medium tracking-wide"
+                  >
+                    {({ isActive }) => (
+                      <>
+                        <span
+                          className="relative z-10 transition-colors duration-200"
+                          style={{ color: isActive ? INK : "#4b5468" }}
+                        >
+                          {item.label}
+                        </span>
+                        <span
+                          className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-1 h-[2.5px] rounded-full transition-all duration-300"
+                          style={{
+                            width: isActive ? "60%" : "0%",
+                            background: `linear-gradient(90deg, ${BLUE}, ${TEAL})`,
+                          }}
+                        />
+                      </>
+                    )}
+                  </NavLink>
+                )
+              )}
             </nav>
 
             {/* CTA + mobile trigger */}
@@ -152,11 +229,11 @@ const Header = () => {
       </header>
 
       {/* spacer so page content doesn't sit under the fixed header */}
-      <div className={scrolled ? "h-[68px]" : "h-16 md:h-20"} />
+      <div className={scrolled ? "h-[68px]" : "h-[76px]"} />
 
       {/* ============= MOBILE DRAWER ============= */}
       <div
-        className={`fixed inset-0 z-[60] transition-opacity duration-300 ${
+        className={`min-[950px]:hidden fixed inset-0 z-[60] transition-opacity duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -169,7 +246,7 @@ const Header = () => {
         {/* panel */}
         <div
           ref={drawerRef}
-          className={`absolute right-0 top-0 h-full w-[84%] max-w-sm flex flex-col transition-transform duration-500 ease-out ${
+          className={`absolute right-0 top-0 h-full w-[84%] max-w-sm flex flex-col overflow-y-auto transition-transform duration-500 ease-out ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
           style={{ background: `linear-gradient(165deg, ${INK} 0%, ${INK_2} 100%)` }}
@@ -191,7 +268,7 @@ const Header = () => {
             ))}
           </div>
 
-          <div className="flex items-center justify-between h-20 px-6">
+          <div className="flex items-center justify-between h-20 px-6 shrink-0">
             <img src={logo} style={{height: 150, width: 150}} alt="ATX Base" className="h-full w-auto object-contain mt-10 py-4 brightness-0 invert" />
             <button
               onClick={() => setMobileOpen(false)}
@@ -202,42 +279,90 @@ const Header = () => {
             </button>
           </div>
 
-          <nav className="flex-1 px-6 mt-10 flex flex-col gap-1">
-            {menuItems.map((item, i) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                end
-                onClick={() => setMobileOpen(false)}
-                className="group flex items-center gap-4 py-3.5 border-b border-white/10"
-                style={{
-                  transitionDelay: mobileOpen ? `${i * 60}ms` : "0ms",
-                  opacity: mobileOpen ? 1 : 0,
-                  transform: mobileOpen ? "translateX(0)" : "translateX(24px)",
-                  transition: "opacity .4s ease, transform .4s ease",
-                }}
-              >
-                {({ isActive }) => (
-                  <>
-                    <span
-                      className="font-mono text-[11px] tracking-widest"
-                      style={{ color: isActive ? TEAL : "rgba(255,255,255,.35)" }}
-                    >
-                      0{i + 1}
+          <nav className="flex-1 px-6 mt-6 flex flex-col gap-1 pb-4">
+            {menuItems.map((item, i) =>
+              item.children ? (
+                <div key={item.path} className="border-b border-white/10">
+                  <button
+                    onClick={() => setMobileServicesOpen((v) => !v)}
+                    className="w-full flex items-center justify-between gap-4 py-3.5"
+                    style={{
+                      transitionDelay: mobileOpen ? `${i * 60}ms` : "0ms",
+                      opacity: mobileOpen ? 1 : 0,
+                      transform: mobileOpen ? "translateX(0)" : "translateX(24px)",
+                      transition: "opacity .4s ease, transform .4s ease",
+                    }}
+                    aria-expanded={mobileServicesOpen}
+                  >
+                    <span className="flex items-center gap-4">
+                      <span className="font-mono text-[11px] tracking-widest" style={{ color: "rgba(255,255,255,.35)" }}>
+                        0{i + 1}
+                      </span>
+                      <span className="text-lg font-semibold tracking-tight text-white/90">{item.label}</span>
                     </span>
-                    <span
-                      className="text-lg font-semibold tracking-tight transition-colors"
-                      style={{ color: isActive ? "#fff" : "rgba(255,255,255,.75)" }}
+                    <svg
+                      viewBox="0 0 12 8"
+                      className={`h-[8px] w-[12px] transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`}
+                      fill="none"
                     >
-                      {item.label}
-                    </span>
-                  </>
-                )}
-              </NavLink>
-            ))}
+                      <path d="M1 1.5 6 6.5 11 1.5" stroke="rgba(255,255,255,.6)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+
+                  <div
+                    className="overflow-hidden transition-all duration-300 ease-out"
+                    style={{ maxHeight: mobileServicesOpen ? item.children.length * 48 + 16 : 0 }}
+                  >
+                    <div className="flex flex-col gap-1 pb-4 pl-11">
+                      {item.children.map((child) => (
+                        <NavLink
+                          key={child.path}
+                          to={child.path}
+                          onClick={() => setMobileOpen(false)}
+                          className="py-2 text-[14.5px] text-white/65 hover:text-white transition-colors"
+                        >
+                          {child.label}
+                        </NavLink>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  end
+                  onClick={() => setMobileOpen(false)}
+                  className="group flex items-center gap-4 py-3.5 border-b border-white/10"
+                  style={{
+                    transitionDelay: mobileOpen ? `${i * 60}ms` : "0ms",
+                    opacity: mobileOpen ? 1 : 0,
+                    transform: mobileOpen ? "translateX(0)" : "translateX(24px)",
+                    transition: "opacity .4s ease, transform .4s ease",
+                  }}
+                >
+                  {({ isActive }) => (
+                    <>
+                      <span
+                        className="font-mono text-[11px] tracking-widest"
+                        style={{ color: isActive ? TEAL : "rgba(255,255,255,.35)" }}
+                      >
+                        0{i + 1}
+                      </span>
+                      <span
+                        className="text-lg font-semibold tracking-tight transition-colors"
+                        style={{ color: isActive ? "#fff" : "rgba(255,255,255,.75)" }}
+                      >
+                        {item.label}
+                      </span>
+                    </>
+                  )}
+                </NavLink>
+              )
+            )}
           </nav>
 
-          <div className="px-6 pb-8 pt-4">
+          <div className="px-6 pb-8 pt-4 shrink-0">
             <button
               onClick={() => {
                 navigate("/contact-us");

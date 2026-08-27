@@ -11,13 +11,13 @@ const TEAL = "#17c3a2";
 const GRADIENT = `linear-gradient(115deg, ${BLUE}, ${TEAL})`;
 
 /** Route where Services.jsx is mounted — update this one line if that ever changes. */
-const SERVICES_ROUTE = "/services";
+const SERVICES_ROUTE = "services/";
 
 const SERVICE_LINKS = [
-  { label: "Website Development", slug: "website-development" },
-  { label: "Web Applications", slug: "web-application-development" },
-  { label: "Android Apps", slug: "android-app-development" },
-  { label: "Windows Apps", slug: "windows-app-development" },
+  { label: "Application Development", slug: "app-development" },
+  { label: "System Design", slug: "system-design" },
+  { label: "AI & Automation", slug: "ai-&-automation" },
+  { label: "Data Science", slug: "data-science" },
   { label: "Digital Marketing", slug: "digital-marketing" },
   { label: "Graphic Design", slug: "graphic-design" },
 ];
@@ -55,7 +55,7 @@ const Footer = () => {
       <div className="h-px w-full" style={{ background: GRADIENT, opacity: 0.5 }} />
 
       {/* decorative pixel trail, same motif used across the site */}
-      <div className="pointer-events-none absolute -top-2 right-10 hidden md:flex flex-col items-end gap-2 opacity-60">
+      {/* <div className="pointer-events-none absolute -top-2 right-10 hidden md:flex flex-col items-end gap-2 opacity-60">
         {[22, 17, 12, 9].map((s, i) => (
           <span
             key={i}
@@ -69,7 +69,7 @@ const Footer = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       <div className="mx-auto max-w-7xl px-6 md:px-10 pt-20 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_.8fr_.8fr_1fr] gap-12 pb-14 border-b border-white/10">
@@ -111,7 +111,7 @@ const Footer = () => {
               {SERVICE_LINKS.map((s) => (
                 <li key={s.slug}>
                   <Link
-                    to={`${SERVICES_ROUTE}#${s.slug}`}
+                    to={`${SERVICES_ROUTE}${s.slug}`}
                     className="text-[14.5px] text-white/70 hover:text-white transition-colors"
                   >
                     {s.label}
