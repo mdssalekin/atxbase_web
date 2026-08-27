@@ -18,7 +18,7 @@ const menuItems = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services", children: SERVICE_LINKS },
   { label: "About Us", path: "/about-us" },
-  { label: "News & Blog", path: "/news&blog" },
+  { label: "News", path: "/news" },
   { label: "Contact Us", path: "/contact-us" },
   { label: "Works", path: "/works" },
 ];
