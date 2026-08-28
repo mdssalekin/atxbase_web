@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-// import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './components/ScrollToTop';
 
 import Home from './pages/Home'
 import Header from './components/Header'
 import Footer from './components/Footer';
 import AboutUs from './pages/AboutUs';
-import ContactUs from './pages/ContactUs ';
+import ContactUs from './pages/ContactUs';
 import Services from './pages/Services';
 import News from './pages/News';
 
@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <ScrollToTop /> */}
+        <ScrollToTop />
         <Header />
         {/* <Theme/> */}
         <Routes>

@@ -1,21 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-/**
- * Mount this once, inside <BrowserRouter> and above <Routes>, in App.jsx:
- *
- *   <BrowserRouter>
- *     <ScrollToTop />
- *     <Header />
- *     <Routes>...</Routes>
- *     <Footer />
- *   </BrowserRouter>
- *
- * React Router doesn't reset scroll position on navigation — it just
- * leaves the browser wherever it was on the previous page. This fixes
- * that: plain route changes jump to the top, and links with a hash
- * (e.g. /services#digital-marketing) scroll to that section instead.
- */
 export default function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
