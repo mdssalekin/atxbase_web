@@ -124,7 +124,7 @@ const Header = () => {
             </button>
 
             {/* desktop links */}
-            <nav className="hidden min-[950px]:flex items-center gap-1">
+            <nav className="hidden min-[885px]:flex items-center gap-1">
               {menuItems.map((item) =>
                 item.children ? (
                   <div key={item.path} className="group relative">
@@ -206,7 +206,7 @@ const Header = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => navigate("/contact-us")}
-                className="hidden min-[950px]:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13.5px] font-semibold text-white shadow-md transition-transform duration-200 hover:-translate-y-0.5"
+                className="hidden min-[885px]:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13.5px] font-semibold text-white shadow-md transition-transform duration-200 hover:-translate-y-0.5"
                 style={{ background: `linear-gradient(115deg, ${BLUE}, ${TEAL})` }}
               >
                 Start a Project
@@ -215,7 +215,7 @@ const Header = () => {
               {/* animated hamburger → close */}
               <button
                 onClick={() => setMobileOpen(true)}
-                className="min-[950px]:hidden relative h-10 w-10 flex flex-col items-center justify-center gap-[5px]"
+                className="min-[885px]:hidden relative h-10 w-10 flex flex-col items-center justify-center gap-[5px]"
                 aria-label="Open menu"
                 aria-expanded={mobileOpen}
               >
@@ -233,7 +233,7 @@ const Header = () => {
 
       {/* ============= MOBILE DRAWER ============= */}
       <div
-        className={`min-[950px]:hidden fixed inset-0 z-[60] transition-opacity duration-300 ${
+        className={`min-[885px]:hidden fixed inset-0 z-[60] transition-opacity duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >

@@ -170,7 +170,11 @@ export default function Works() {
                   style={{ transitionDelay: `${(i % 3) * 70}ms` }}
                 >
                   <div className="h-44">
-                    <CoverPlaceholder label={project.category} className="h-full" />
+                    {project.cover ? (
+                      <img src={project.cover} alt={project.title} className="w-full h-full object-cover" />
+                    ) : (
+                      <CoverPlaceholder label={project.category} className="h-full" />
+                    )}
                   </div>
                   <div className="p-6 flex flex-col flex-1">
                     <div className="flex items-center justify-between gap-2">

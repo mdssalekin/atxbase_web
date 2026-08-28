@@ -6,7 +6,34 @@
  * These are example projects, not real client work — swap this array
  * for your actual case studies: real names (with permission), real
  * screenshots, real outcomes instead of the placeholder copy below.
+ *
+ * ---------------------------------------------------------------------
+ * ADDING REAL COVER PHOTOS
+ * ---------------------------------------------------------------------
+ * Vite treats any imported image as a plain URL string, so you can import
+ * images at the top of this file just like in a component:
+ *
+ *   import fashionRetailCover from "../assets/works/fashion-retail-storefront.jpg";
+ *
+ * Then attach it to the matching project's `cover` field below, e.g.:
+ *
+ *   { slug: "fashion-retail-storefront", ..., cover: fashionRetailCover }
+ *
+ * Works.jsx and WorkDetail.jsx already check for `cover` and render the
+ * real image when it's set, falling back to the gradient placeholder when
+ * it's null — so you can add these one project at a time without breaking
+ * anything in between.
  */
+
+import fashionRetailCover from "./assets/fashionRetailCover.png";
+import logisticsDashboardCover from "./assets/logisticsDashboardCover.png";
+// import fintechOnboardingCover from "../assets/works/fintech-onboarding-app.jpg";
+// import propertySuiteCover from "../assets/works/property-management-suite.jpg";
+// import saasCampaignCover from "../assets/works/saas-growth-campaign.jpg";
+// import nonprofitRebrandCover from "../assets/works/nonprofit-rebrand.jpg";
+// import healthcareArchCover from "../assets/works/healthcare-platform-architecture.jpg";
+// import supportAutomationCover from "../assets/works/support-chatbot-automation.jpg";
+// import demandForecastingCover from "../assets/works/retail-demand-forecasting.jpg";
 
 export const CATEGORIES = [
   "All",
@@ -30,6 +57,7 @@ export const PROJECTS = [
     client: "Fashion retail brand",
     duration: "8 weeks",
     tags: ["Next.js", "Shopify", "SEO"],
+    cover: fashionRetailCover, // swap to `fashionRetailCover` once imported above
     challenge:
       "The client's existing storefront was slow, hard to update without a developer, and losing customers at checkout. Every content change meant a support ticket to their old agency.",
     approach:
@@ -50,6 +78,7 @@ export const PROJECTS = [
     client: "Logistics & delivery company",
     duration: "3 months",
     tags: ["React", "Node.js", "WebSockets"],
+    cover: logisticsDashboardCover, // swap to `logisticsDashboardCover` once imported above
     challenge:
       "Dispatchers were tracking vehicles across a patchwork of spreadsheets and a GPS vendor's clunky portal, with no single view of exceptions as they happened.",
     approach:
@@ -70,6 +99,7 @@ export const PROJECTS = [
     client: "Fintech startup",
     duration: "10 weeks",
     tags: ["Kotlin", "Jetpack Compose", "KYC integration"],
+    cover: null, // swap to `fintechOnboardingCover` once imported above
     challenge:
       "Account opening required manual document review and back-and-forth email, which meant a multi-day wait before new customers could actually use the product.",
     approach:
@@ -90,6 +120,7 @@ export const PROJECTS = [
     client: "Property management firm",
     duration: "4 months",
     tags: [".NET", "WPF", "SQL Server"],
+    cover: null, // swap to `propertySuiteCover` once imported above
     challenge:
       "The client's branch offices relied on a decade-old desktop tool that no longer had a vendor to support it, with no path forward as staff turned over.",
     approach:
@@ -110,6 +141,7 @@ export const PROJECTS = [
     client: "B2B SaaS company",
     duration: "Ongoing, 3 quarters",
     tags: ["SEO", "Google Ads", "LinkedIn Ads"],
+    cover: null, // swap to `saasCampaignCover` once imported above
     challenge:
       "The client's organic traffic had been flat for over a year, and their paid campaigns were generating clicks but few qualified leads.",
     approach:
@@ -130,6 +162,7 @@ export const PROJECTS = [
     client: "Regional nonprofit organization",
     duration: "6 weeks",
     tags: ["Brand identity", "Print", "Figma"],
+    cover: null, // swap to `nonprofitRebrandCover` once imported above
     challenge:
       "The nonprofit's existing materials were inconsistent across print and digital, and they had no in-house designer to keep new materials on-brand.",
     approach:
@@ -150,6 +183,7 @@ export const PROJECTS = [
     client: "Healthcare technology company",
     duration: "5 weeks (architecture phase)",
     tags: ["Microservices", "AWS", "PostgreSQL"],
+    cover: null, // swap to `healthcareArchCover` once imported above
     challenge:
       "The client needed to support multiple healthcare organizations on one platform, with strict data isolation between tenants and no tolerance for downtime.",
     approach:
@@ -170,6 +204,7 @@ export const PROJECTS = [
     client: "E-commerce brand",
     duration: "6 weeks",
     tags: ["RPA", "NLP", "Zendesk integration"],
+    cover: null, // swap to `supportAutomationCover` once imported above
     challenge:
       "Support tickets were piling up in a single queue with no prioritization, so urgent issues waited behind routine ones during busy periods.",
     approach:
@@ -190,6 +225,7 @@ export const PROJECTS = [
     client: "Multi-location retail chain",
     duration: "8 weeks",
     tags: ["Python", "Time-series modeling", "Dashboards"],
+    cover: null, // swap to `demandForecastingCover` once imported above
     challenge:
       "Inventory planning was based on manager intuition and last year's numbers, leading to overstock in some locations and stockouts in others during peak seasons.",
     approach:

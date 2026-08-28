@@ -129,16 +129,16 @@ export default function WorkDetail() {
 
             <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
               <div>
-                <p className="font-mono text-[11px] tracking-widest uppercase text-white/35">Client</p>
-                <p className="mt-1 text-[14px] font-medium text-white/85">{project.client}</p>
+                <p className="font-mono text-[11px] tracking-widest uppercase text-white/60">Client</p>
+                <p className="mt-1 text-[14px] font-medium text-white/80">{project.client}</p>
               </div>
               <div>
-                <p className="font-mono text-[11px] tracking-widest uppercase text-white/35">Duration</p>
-                <p className="mt-1 text-[14px] font-medium text-white/85">{project.duration}</p>
+                <p className="font-mono text-[11px] tracking-widest uppercase text-white/60">Duration</p>
+                <p className="mt-1 text-[14px] font-medium text-white/80">{project.duration}</p>
               </div>
               <div>
-                <p className="font-mono text-[11px] tracking-widest uppercase text-white/35">Year</p>
-                <p className="mt-1 text-[14px] font-medium text-white/85">{project.year}</p>
+                <p className="font-mono text-[11px] tracking-widest uppercase text-white/60">Year</p>
+                <p className="mt-1 text-[14px] font-medium text-white/80">{project.year}</p>
               </div>
             </div>
           </Reveal>
@@ -149,7 +149,11 @@ export default function WorkDetail() {
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-5xl px-6 md:px-10">
           <Reveal className="rounded-[24px] overflow-hidden border border-black/5 shadow-xl aspect-[16/9]">
-            <CoverPlaceholder label={project.category} className="h-full" />
+            {project.cover ? (
+              <img src={project.cover} alt={project.title} className="w-full h-full object-cover" />
+            ) : (
+              <CoverPlaceholder label={project.category} className="h-full" />
+            )}
           </Reveal>
         </div>
       </section>
@@ -220,7 +224,11 @@ export default function WorkDetail() {
                   style={{ transitionDelay: `${i * 70}ms` }}
                 >
                   <div className="h-36">
-                    <CoverPlaceholder label={p.category} className="h-full" />
+                    {p.cover ? (
+                      <img src={p.cover} alt={p.title} className="w-full h-full object-cover" />
+                    ) : (
+                      <CoverPlaceholder label={p.category} className="h-full" />
+                    )}
                   </div>
                   <div className="p-5">
                     <span
