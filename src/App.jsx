@@ -8,14 +8,15 @@ import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Services from './pages/Services';
 import News from './pages/News';
-
-import DigitalMark from './pages/DigitalMark';
 import AppDev from './pages/AppDev';
+import DigitalMark from './pages/DigitalMark';
 import SystemDesign from './pages/SystemDesign';
 import AI from './pages/AiAutomation';
 import DataScience from './pages/DataScience';
 import GraphicDesign from './pages/Graphics';
 import Works from './pages/Works';
+import Workdetail from './pages/projects/Workdetail';
+
 function App() {
   return (
     <>
@@ -30,8 +31,10 @@ function App() {
           <Route path='contact-us' element={<ContactUs />} />
           <Route path='/news' element={<News />} />
           <Route path='/works' element={<Works />} />
+          <Route path="/works/:slug" element={<Workdetail />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/digital-marketing" element={<DigitalMark />} />
+          <Route path ='/services/application-development' element={<AppDev />} />
           <Route path="/services/app-development" element={<AppDev />} />
           <Route path="/services/system-design" element={<SystemDesign />} />
           <Route path="/services/ai-&-automation" element={<AI />} />

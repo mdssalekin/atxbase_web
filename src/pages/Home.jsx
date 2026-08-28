@@ -90,11 +90,11 @@ const PixelTrail = ({ sizes = [26, 20, 15, 11, 8], className = "" }) => (
 const CAPABILITIES = [
   "Web Development",
   "Application Development",
-  "Digital Marketing",
-  "Graphic Design",
   "System Design",
   "AI & Automation",
   "Data Science",
+  "Digital Marketing",
+  "Graphic Design",
 ];
 
 const SERVICES = [
@@ -102,16 +102,6 @@ const SERVICES = [
     tag: "WEB",
     title: "Web & Application Development",
     desc: "Modern websites and scalable applications built for speed, accessibility, performance, and seamless growth across web, mobile, and desktop.",
-  },
-  {
-    tag: "MKT",
-    title: "Digital Marketing",
-    desc: "SEO, paid campaigns, social media, and content strategies designed to increase visibility, engagement, and qualified leads.",
-  },
-  {
-    tag: "DES",
-    title: "Graphic Design",
-    desc: "Brand identity, UI design, marketing materials, and visual systems that create a consistent and memorable presence.",
   },
   {
     tag: "SYS",
@@ -127,6 +117,16 @@ const SERVICES = [
     tag: "DATA",
     title: "Data Science",
     desc: "Data analysis, predictive modeling, and intelligent insights that help transform complex data into better business decisions.",
+  },
+  {
+    tag: "MKT",
+    title: "Digital Marketing",
+    desc: "SEO, paid campaigns, social media, and content strategies designed to increase visibility, engagement, and qualified leads.",
+  },
+  {
+    tag: "DES",
+    title: "Graphic Design",
+    desc: "Brand identity, UI design, marketing materials, and visual systems that create a consistent and memorable presence.",
   },
 ];
 

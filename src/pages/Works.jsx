@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { CATEGORIES, PROJECTS } from "./projects/Worksdata";
 
 /** Brand tokens — mirror Header.jsx / Home.jsx / Services.jsx / Footer.jsx */
 const INK = "#0a0f24";
@@ -80,7 +81,7 @@ const PixelTrail = ({ sizes = [22, 17, 12, 9], className = "" }) => (
 
 // Stands in for a real project screenshot — a gradient plate with the
 // category's initials, so cards look finished before real cover images exist.
-const CoverPlaceholder = ({ label, className = "" }) => (
+export const CoverPlaceholder = ({ label, className = "" }) => (
   <div
     className={`relative w-full h-full flex items-center justify-center overflow-hidden ${className}`}
     style={{ background: `linear-gradient(150deg, ${INK} 0%, ${INK_2} 100%)` }}
@@ -91,98 +92,6 @@ const CoverPlaceholder = ({ label, className = "" }) => (
     </span>
   </div>
 );
-
-/* ---------------------------------------------------------------- */
-/*  Placeholder content                                              */
-/*  These are example projects, not real client work — swap this     */
-/*  array for your actual case studies (real names, metrics, links). */
-/* ---------------------------------------------------------------- */
-
-const CATEGORIES = [
-  "All",
-  "Web Development",
-  "Application Development",
-  "Digital Marketing",
-  "Graphic Design",
-  "System Design",
-  "AI & Automation",
-  "Data Science",
-];
-
-const PROJECTS = [
-  {
-    slug: "fashion-retail-storefront",
-    category: "Web Development",
-    title: "E-commerce storefront for a fashion retailer",
-    summary: "A rebuilt storefront focused on page speed and checkout conversion, with a CMS the client's marketing team runs day to day.",
-    year: "2026",
-    tags: ["Next.js", "Shopify", "SEO"],
-  },
-  {
-    slug: "logistics-ops-dashboard",
-    category: "Web Development",
-    title: "Fleet operations dashboard for a logistics company",
-    summary: "A real-time dashboard for dispatchers to track vehicles, routes, and delivery exceptions across a growing fleet.",
-    year: "2026",
-    tags: ["React", "Node.js", "WebSockets"],
-  },
-  {
-    slug: "fintech-onboarding-app",
-    category: "Application Development",
-    title: "Customer onboarding app for a fintech startup",
-    summary: "A native Android app that took account signup from a multi-day process down to a single guided session.",
-    year: "2025",
-    tags: ["Kotlin", "Jetpack Compose", "KYC integration"],
-  },
-  {
-    slug: "property-management-suite",
-    category: "Application Development",
-    title: "Desktop suite for a property management firm",
-    summary: "Internal desktop software replacing a decade-old legacy tool, built to run offline-first across branch offices.",
-    year: "2025",
-    tags: [".NET", "WPF", "SQL Server"],
-  },
-  {
-    slug: "saas-growth-campaign",
-    category: "Digital Marketing",
-    title: "Growth campaign for a B2B SaaS product",
-    summary: "A combined SEO and paid strategy that rebuilt organic traffic and cut cost-per-lead across three quarters.",
-    year: "2026",
-    tags: ["SEO", "Google Ads", "LinkedIn Ads"],
-  },
-  {
-    slug: "nonprofit-rebrand",
-    category: "Graphic Design",
-    title: "Full rebrand for a regional nonprofit",
-    summary: "New identity, print materials, and a design system built to be run by a small in-house team without a designer on staff.",
-    year: "2025",
-    tags: ["Brand identity", "Print", "Figma"],
-  },
-  {
-    slug: "healthcare-platform-architecture",
-    category: "System Design",
-    title: "Scalable architecture for a healthcare records platform",
-    summary: "System design for a multi-tenant platform built to meet strict data isolation and uptime requirements from day one.",
-    year: "2026",
-    tags: ["Microservices", "AWS", "PostgreSQL"],
-  },
-  {
-    slug: "support-chatbot-automation",
-    category: "AI & Automation",
-    title: "Support ticket automation for an e-commerce brand",
-    summary: "An automation layer that triages and routes incoming support tickets, cutting first-response time significantly.",
-    year: "2026",
-    tags: ["RPA", "NLP", "Zendesk integration"],
-  },
-  {
-    slug: "retail-demand-forecasting",
-    category: "Data Science",
-    title: "Demand forecasting model for a retail chain",
-    summary: "A forecasting pipeline that helped a multi-location retailer plan inventory around seasonal demand instead of guesswork.",
-    year: "2025",
-    tags: ["Python", "Time-series modeling", "Dashboards"],
-  },
-];
 
 /* ---------------------------------------------------------------- */
 /*  Page                                                              */
