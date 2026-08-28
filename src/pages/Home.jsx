@@ -88,44 +88,45 @@ const PixelTrail = ({ sizes = [26, 20, 15, 11, 8], className = "" }) => (
 /* ---------------------------------------------------------------- */
 
 const CAPABILITIES = [
-  "Website Development",
-  "Web Applications",
-  "Android Apps",
-  "Windows Apps",
+  "Web Development",
+  "Application Development",
   "Digital Marketing",
   "Graphic Design",
+  "System Design",
+  "AI & Automation",
+  "Data Science",
 ];
 
 const SERVICES = [
   {
     tag: "WEB",
-    title: "Website Development",
-    desc: "Marketing sites, e-commerce storefronts, and content platforms — fast, accessible, and simple for your team to keep updated.",
-  },
-  {
-    tag: "APP",
-    title: "Web Application Development",
-    desc: "Dashboards, portals, and SaaS products built with the architecture to scale as your users and data grow.",
-  },
-  {
-    tag: "AND",
-    title: "Android App Development",
-    desc: "Native and cross-platform apps tuned for performance on real devices, not just demos.",
-  },
-  {
-    tag: "WIN",
-    title: "Windows App Development",
-    desc: "Desktop software and internal tools for teams that spend their day outside the browser.",
+    title: "Web & Application Development",
+    desc: "Modern websites and scalable applications built for speed, accessibility, performance, and seamless growth across web, mobile, and desktop.",
   },
   {
     tag: "MKT",
     title: "Digital Marketing",
-    desc: "SEO, paid campaigns, and content strategy built to turn traffic into qualified pipeline.",
+    desc: "SEO, paid campaigns, social media, and content strategies designed to increase visibility, engagement, and qualified leads.",
   },
   {
     tag: "DES",
     title: "Graphic Design",
-    desc: "Brand identity, UI design, and visual systems that hold together across every screen and print piece.",
+    desc: "Brand identity, UI design, marketing materials, and visual systems that create a consistent and memorable presence.",
+  },
+  {
+    tag: "SYS",
+    title: "System Design",
+    desc: "Robust system architectures designed for reliability, maintainability, security, and seamless growth as your requirements evolve.",
+  },
+  {
+    tag: "AI",
+    title: "AI & Automation",
+    desc: "AI-powered solutions and workflow automation that reduce repetitive work, improve efficiency, and unlock new possibilities.",
+  },
+  {
+    tag: "DATA",
+    title: "Data Science",
+    desc: "Data analysis, predictive modeling, and intelligent insights that help transform complex data into better business decisions.",
   },
 ];
 

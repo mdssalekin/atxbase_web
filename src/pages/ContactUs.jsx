@@ -96,12 +96,13 @@ const SOCIALS = [
 ];
 
 const SERVICE_OPTIONS = [
-  "Website Development",
-  "Web Application Development",
-  "Android App Development",
-  "Windows App Development",
+  "Web Development",
+  "Application Development",
   "Digital Marketing",
   "Graphic Design",
+  "System Design",
+  "AI & Automation",
+  "Data Science",
   "Something else",
 ];
 

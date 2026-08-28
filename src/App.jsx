@@ -15,7 +15,7 @@ import SystemDesign from './pages/SystemDesign';
 import AI from './pages/AiAutomation';
 import DataScience from './pages/DataScience';
 import GraphicDesign from './pages/Graphics';
-
+import Works from './pages/Works';
 function App() {
   return (
     <>
@@ -29,6 +29,7 @@ function App() {
           <Route path='/about-us' element={<AboutUs />} />
           <Route path='contact-us' element={<ContactUs />} />
           <Route path='/news' element={<News />} />
+          <Route path='/works' element={<Works />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/digital-marketing" element={<DigitalMark />} />
           <Route path="/services/app-development" element={<AppDev />} />

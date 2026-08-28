@@ -161,100 +161,164 @@ const ServiceVisual = ({ kind }) => (
 
 const SERVICES = [
   {
-    slug: "website-development",
+    slug: "web-development",
     tag: "WEB",
     kind: "web",
-    title: "Website Development",
-    tagline: "Marketing sites, e-commerce, and content platforms that load fast and stay easy to run.",
+    title: "Web Development",
+    tagline:
+      "Fast, responsive websites and web platforms built for performance, accessibility, and growth.",
     description:
-      "We design and build websites that hold up under real traffic and real content updates — not just a launch-day demo. Every site is built responsive-first, optimized for search from day one, and handed over with documentation your team can actually use.",
+      "We design and build modern websites that look great, load quickly, and remain easy to manage. From marketing sites and e-commerce storefronts to content platforms, every website is built with responsive design, SEO, accessibility, and long-term maintainability in mind.",
     features: [
-      "Custom responsive design, not a locked-down template",
-      "SEO-friendly structure, performance, and accessibility built in",
-      "CMS setup so your team can update content without a developer",
-      "E-commerce, booking, or membership functionality where needed",
+      "Custom responsive websites and landing pages",
+      "E-commerce storefronts and content platforms",
+      "SEO-friendly structure, performance, and accessibility",
+      "CMS setup so your team can manage content independently",
     ],
-    stack: ["React / Next.js", "WordPress", "Shopify", "Webflow"],
+    stack: [
+      "React / Next.js",
+      "WordPress",
+      "Shopify",
+      "Webflow",
+    ],
   },
   {
-    slug: "web-application-development",
+    slug: "application-development",
     tag: "APP",
-    kind: "webapp",
-    title: "Web Application Development",
-    tagline: "Dashboards, portals, and SaaS products built with the architecture to scale.",
+    kind: "app",
+    title: "Application Development",
+    tagline:
+      "Scalable web, mobile, and desktop applications designed around your users and workflows.",
     description:
-      "When a project outgrows a website, we build a proper application — authentication, role-based access, data pipelines, and an interface your users won't need a manual for. We architect for the traffic and team size you'll have in two years, not just at launch.",
+      "We build custom applications that solve real business problems — from dashboards and SaaS platforms to Android and Windows applications. Our applications are designed for usability, security, performance, and scalability from the beginning.",
     features: [
-      "Custom dashboards, admin panels, and internal tools",
-      "API design and integration with the systems you already use",
-      "Authentication, permissions, and multi-tenant architecture",
-      "Cloud deployment, monitoring, and handover documentation",
+      "Custom web applications, dashboards, and SaaS platforms",
+      "Android and Windows application development",
+      "Authentication, permissions, APIs, and third-party integrations",
+      "Deployment, monitoring, maintenance, and ongoing support",
     ],
-    stack: ["React", "Node.js", "PostgreSQL", "AWS / GCP"],
+    stack: [
+      "React",
+      "Node.js",
+      "Kotlin / React Native",
+      ".NET / C#",
+      "PostgreSQL / SQL Server",
+    ],
   },
   {
-    slug: "android-app-development",
-    tag: "AND",
-    kind: "android",
-    title: "Android App Development",
-    tagline: "Native and cross-platform apps tuned for performance on real devices.",
+    slug: "system-design",
+    tag: "SYS",
+    kind: "system",
+    title: "System Design",
+    tagline:
+      "Reliable and scalable architectures designed around your business and technical requirements.",
     description:
-      "We build Android apps that feel native because, where it matters, they are — smooth animations, proper offline handling, and performance testing across device tiers, not just the latest flagship phone.",
+      "We design the architecture behind complex digital systems — connecting applications, databases, APIs, infrastructure, and business processes into reliable solutions that are easier to maintain and ready to scale.",
     features: [
-      "Native (Kotlin) or cross-platform builds, matched to your budget and timeline",
-      "Play Store submission, versioning, and release management",
-      "Push notifications, in-app purchases, and third-party integrations",
-      "Performance testing across a real spread of devices",
+      "Scalable application and system architecture",
+      "Database design and data modeling",
+      "API architecture and third-party system integration",
+      "Cloud infrastructure, security, monitoring, and reliability planning",
     ],
-    stack: ["Kotlin", "Jetpack Compose", "React Native", "Firebase"],
+    stack: [
+      "AWS / GCP",
+      "Node.js",
+      "PostgreSQL",
+      "Docker",
+      "REST / GraphQL",
+    ],
   },
   {
-    slug: "windows-app-development",
-    tag: "WIN",
-    kind: "windows",
-    title: "Windows App Development",
-    tagline: "Desktop software and internal tools for teams that live outside the browser.",
+    slug: "ai-automation",
+    tag: "AI",
+    kind: "ai",
+    title: "AI & Automation",
+    tagline:
+      "Intelligent automation that reduces repetitive work and makes your business more efficient.",
     description:
-      "Some workflows still belong on the desktop — point-of-sale systems, internal operations tools, or software that needs direct access to local hardware and files. We build and package Windows applications that are stable, easy to deploy, and simple to update.",
+      "We integrate AI and automation into real business workflows — from intelligent assistants and document processing to automated operations and data-driven decision making.",
     features: [
-      "Custom desktop applications for internal or customer-facing use",
-      "Integration with local hardware, printers, and file systems",
-      "Installer packaging and update/versioning workflows",
-      "Migration support for teams moving off legacy software",
+      "AI assistants and custom AI-powered applications",
+      "Workflow and business process automation",
+      "Document, text, and data processing",
+      "AI integration with existing software, APIs, and internal systems",
     ],
-    stack: [".NET / C#", "WPF", "Electron", "SQL Server"],
+    stack: [
+      "OpenAI APIs",
+      "Python",
+      "Node.js",
+      "LangChain",
+      "Automation Platforms",
+    ],
+  },
+  {
+    slug: "data-science",
+    tag: "DATA",
+    kind: "data",
+    title: "Data Science",
+    tagline:
+      "Turn complex data into actionable insights, predictions, and better decisions.",
+    description:
+      "We transform raw data into useful intelligence through analysis, visualization, statistical modeling, and machine learning — helping teams understand what is happening and make better decisions about what comes next.",
+    features: [
+      "Data analysis, cleaning, and transformation",
+      "Interactive dashboards and business intelligence",
+      "Predictive analytics and machine learning models",
+      "Data pipelines and automated reporting",
+    ],
+    stack: [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+      "SQL",
+      "Power BI",
+    ],
   },
   {
     slug: "digital-marketing",
     tag: "MKT",
     kind: "marketing",
     title: "Digital Marketing",
-    tagline: "SEO, paid campaigns, and content strategy that turn traffic into pipeline.",
+    tagline:
+      "SEO, paid campaigns, and content strategy that turn traffic into measurable growth.",
     description:
-      "A great product still needs to be found. We run search, social, and content strategy the same way we build software — with clear goals, visible reporting, and no vanity metrics dressed up as results.",
+      "We help businesses reach the right audience through search, social, paid advertising, and content. Every campaign is guided by clear objectives, transparent reporting, and measurable business outcomes.",
     features: [
-      "SEO audits and ongoing on-page / technical optimization",
+      "SEO audits and ongoing on-page and technical optimization",
       "Paid campaigns across Google, Meta, and LinkedIn",
-      "Content strategy and editorial calendars",
-      "Monthly reporting tied to leads and conversions, not just clicks",
+      "Content strategy and editorial planning",
+      "Analytics and reporting focused on leads, conversions, and ROI",
     ],
-    stack: ["Google Ads", "Meta Ads", "Google Analytics", "SEMrush"],
+    stack: [
+      "Google Ads",
+      "Meta Ads",
+      "LinkedIn Ads",
+      "Google Analytics",
+      "SEMrush",
+    ],
   },
   {
     slug: "graphic-design",
     tag: "DES",
     kind: "design",
     title: "Graphic Design",
-    tagline: "Brand identity, UI design, and visual systems that hold together at any size.",
+    tagline:
+      "Brand identities and visual systems that stay consistent across every touchpoint.",
     description:
-      "From a first logo to a full design system, we build visual identities that stay consistent across your website, app, and print materials — with source files and guidelines you actually own.",
+      "We create visual identities and design systems that make businesses recognizable and products easier to use. From branding and UI/UX to marketing materials, every element is designed to work together.",
     features: [
       "Brand identity: logo, color, typography, and usage guidelines",
       "UI/UX design for web and mobile products",
-      "Marketing collateral: social templates, decks, print",
-      "Full design systems and component libraries for product teams",
+      "Social media, presentations, advertising, and print materials",
+      "Design systems and reusable component libraries",
     ],
-    stack: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "After Effects"],
+    stack: [
+      "Figma",
+      "Adobe Illustrator",
+      "Adobe Photoshop",
+      "After Effects",
+    ],
   },
 ];
 
@@ -364,7 +428,7 @@ export default function Services() {
       </section>
 
       {/* ============= STICKY SUB-NAV ============= */}
-      <SubNav activeSlug={activeSlug} onNavigate={goTo} />
+      {/* <SubNav activeSlug={activeSlug} onNavigate={goTo} /> */}
 
       {/* ============= SERVICE SECTIONS ============= */}
       {SERVICES.map((s, i) => {
