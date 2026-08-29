@@ -25,25 +25,25 @@
  * anything in between.
  */
 
-import fashionRetailCover from "./assets/fashionRetailCover.png";
-import logisticsDashboardCover from "./assets/logisticsDashboardCover.png";
-// import fintechOnboardingCover from "../assets/works/fintech-onboarding-app.jpg";
-// import propertySuiteCover from "../assets/works/property-management-suite.jpg";
-// import saasCampaignCover from "../assets/works/saas-growth-campaign.jpg";
-// import nonprofitRebrandCover from "../assets/works/nonprofit-rebrand.jpg";
-// import healthcareArchCover from "../assets/works/healthcare-platform-architecture.jpg";
-// import supportAutomationCover from "../assets/works/support-chatbot-automation.jpg";
-// import demandForecastingCover from "../assets/works/retail-demand-forecasting.jpg";
+import fashionRetailCover from "./assets/fashion-retail.png";
+import logisticsDashboardCover from "./assets/logistics-dashboard.png";
+import fintechOnboardingCover from "./assets/fintech-onboarding-app.png";
+import propertySuiteCover from "./assets/property-management-suite.png";
+import saasCampaignCover from "./assets/saas-growth-campaign.png";
+import nonprofitRebrandCover from "./assets/nonprofit-rebrand.png";
+import healthcareArchCover from "./assets/healthcare-platform-architecture.png";
+import supportAutomationCover from "./assets/support-chatbot-automation.png";
+import demandForecastingCover from "./assets/retail-demand-forecasting.png";
 
 export const CATEGORIES = [
   "All",
   "Web Development",
   "Application Development",
-  "Digital Marketing",
-  "Graphic Design",
-  "System Design",
+   "System Design",
   "AI & Automation",
   "Data Science",
+  "Digital Marketing",
+  "Graphic Design",
 ];
 
 export const PROJECTS = [
@@ -99,7 +99,7 @@ export const PROJECTS = [
     client: "Fintech startup",
     duration: "10 weeks",
     tags: ["Kotlin", "Jetpack Compose", "KYC integration"],
-    cover: null, // swap to `fintechOnboardingCover` once imported above
+    cover: fintechOnboardingCover, // swap to `fintechOnboardingCover` once imported above
     challenge:
       "Account opening required manual document review and back-and-forth email, which meant a multi-day wait before new customers could actually use the product.",
     approach:
@@ -120,7 +120,7 @@ export const PROJECTS = [
     client: "Property management firm",
     duration: "4 months",
     tags: [".NET", "WPF", "SQL Server"],
-    cover: null, // swap to `propertySuiteCover` once imported above
+    cover: propertySuiteCover, // swap to `propertySuiteCover` once imported above
     challenge:
       "The client's branch offices relied on a decade-old desktop tool that no longer had a vendor to support it, with no path forward as staff turned over.",
     approach:
@@ -131,49 +131,7 @@ export const PROJECTS = [
       "New hires productive without vendor-specific training",
     ],
   },
-  {
-    slug: "saas-growth-campaign",
-    category: "Digital Marketing",
-    title: "Growth campaign for a B2B SaaS product",
-    summary:
-      "A combined SEO and paid strategy that rebuilt organic traffic and cut cost-per-lead across three quarters.",
-    year: "2026",
-    client: "B2B SaaS company",
-    duration: "Ongoing, 3 quarters",
-    tags: ["SEO", "Google Ads", "LinkedIn Ads"],
-    cover: null, // swap to `saasCampaignCover` once imported above
-    challenge:
-      "The client's organic traffic had been flat for over a year, and their paid campaigns were generating clicks but few qualified leads.",
-    approach:
-      "We ran a technical SEO audit and content refresh alongside a restructured paid strategy across Google and LinkedIn, targeted at their actual buyer roles.",
-    results: [
-      "Organic traffic trending upward for the first time in over a year",
-      "Lower cost-per-lead on paid campaigns",
-      "A reporting cadence the client's team relies on for planning",
-    ],
-  },
-  {
-    slug: "nonprofit-rebrand",
-    category: "Graphic Design",
-    title: "Full rebrand for a regional nonprofit",
-    summary:
-      "New identity, print materials, and a design system built to be run by a small in-house team without a designer on staff.",
-    year: "2025",
-    client: "Regional nonprofit organization",
-    duration: "6 weeks",
-    tags: ["Brand identity", "Print", "Figma"],
-    cover: null, // swap to `nonprofitRebrandCover` once imported above
-    challenge:
-      "The nonprofit's existing materials were inconsistent across print and digital, and they had no in-house designer to keep new materials on-brand.",
-    approach:
-      "We designed a full identity system — logo, color, typography, templates — documented simply enough for a non-designer to apply correctly without guessing.",
-    results: [
-      "One consistent identity across print and digital materials",
-      "Editable templates the team maintains without outside help",
-      "A brand guideline document used for every new campaign since",
-    ],
-  },
-  {
+    {
     slug: "healthcare-platform-architecture",
     category: "System Design",
     title: "Scalable architecture for a healthcare records platform",
@@ -183,7 +141,7 @@ export const PROJECTS = [
     client: "Healthcare technology company",
     duration: "5 weeks (architecture phase)",
     tags: ["Microservices", "AWS", "PostgreSQL"],
-    cover: null, // swap to `healthcareArchCover` once imported above
+    cover: healthcareArchCover, // swap to `healthcareArchCover` once imported above
     challenge:
       "The client needed to support multiple healthcare organizations on one platform, with strict data isolation between tenants and no tolerance for downtime.",
     approach:
@@ -204,7 +162,7 @@ export const PROJECTS = [
     client: "E-commerce brand",
     duration: "6 weeks",
     tags: ["RPA", "NLP", "Zendesk integration"],
-    cover: null, // swap to `supportAutomationCover` once imported above
+    cover: supportAutomationCover, // swap to `supportAutomationCover` once imported above
     challenge:
       "Support tickets were piling up in a single queue with no prioritization, so urgent issues waited behind routine ones during busy periods.",
     approach:
@@ -225,7 +183,7 @@ export const PROJECTS = [
     client: "Multi-location retail chain",
     duration: "8 weeks",
     tags: ["Python", "Time-series modeling", "Dashboards"],
-    cover: null, // swap to `demandForecastingCover` once imported above
+    cover: demandForecastingCover, // swap to `demandForecastingCover` once imported above
     challenge:
       "Inventory planning was based on manager intuition and last year's numbers, leading to overstock in some locations and stockouts in others during peak seasons.",
     approach:
@@ -236,6 +194,49 @@ export const PROJECTS = [
       "A weekly forecast the planning team now builds orders around",
     ],
   },
+  {
+    slug: "saas-growth-campaign",
+    category: "Digital Marketing",
+    title: "Growth campaign for a B2B SaaS product",
+    summary:
+      "A combined SEO and paid strategy that rebuilt organic traffic and cut cost-per-lead across three quarters.",
+    year: "2026",
+    client: "B2B SaaS company",
+    duration: "Ongoing, 3 quarters",
+    tags: ["SEO", "Google Ads", "LinkedIn Ads"],
+    cover: saasCampaignCover, // swap to `saasCampaignCover` once imported above
+    challenge:
+      "The client's organic traffic had been flat for over a year, and their paid campaigns were generating clicks but few qualified leads.",
+    approach:
+      "We ran a technical SEO audit and content refresh alongside a restructured paid strategy across Google and LinkedIn, targeted at their actual buyer roles.",
+    results: [
+      "Organic traffic trending upward for the first time in over a year",
+      "Lower cost-per-lead on paid campaigns",
+      "A reporting cadence the client's team relies on for planning",
+    ],
+  },
+  {
+    slug: "nonprofit-rebrand",
+    category: "Graphic Design",
+    title: "Full rebrand for a regional nonprofit",
+    summary:
+      "New identity, print materials, and a design system built to be run by a small in-house team without a designer on staff.",
+    year: "2025",
+    client: "Regional nonprofit organization",
+    duration: "6 weeks",
+    tags: ["Brand identity", "Print", "Figma"],
+    cover: nonprofitRebrandCover, // swap to `nonprofitRebrandCover` once imported above
+    challenge:
+      "The nonprofit's existing materials were inconsistent across print and digital, and they had no in-house designer to keep new materials on-brand.",
+    approach:
+      "We designed a full identity system — logo, color, typography, templates — documented simply enough for a non-designer to apply correctly without guessing.",
+    results: [
+      "One consistent identity across print and digital materials",
+      "Editable templates the team maintains without outside help",
+      "A brand guideline document used for every new campaign since",
+    ],
+  },
+
 ];
 
 export const getProjectBySlug = (slug) => PROJECTS.find((p) => p.slug === slug);

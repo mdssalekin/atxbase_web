@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { CATEGORIES, POSTS, formatDate } from "./news/NewsData";
 
 /** Brand tokens — mirror Header.jsx / Home.jsx / Services.jsx / Footer.jsx */
 const INK = "#0a0f24";
@@ -80,7 +81,8 @@ const PixelTrail = ({ sizes = [22, 17, 12, 9], className = "" }) => (
 
 // Stands in for a real cover photo — a gradient plate with the category's
 // initial, so cards look finished before real post images exist.
-const CoverPlaceholder = ({ label, className = "" }) => (
+// Exported so NewsDetail.jsx can reuse the exact same visual.
+export const CoverPlaceholder = ({ label, className = "" }) => (
   <div
     className={`relative w-full h-full flex items-center justify-center overflow-hidden ${className}`}
     style={{ background: `linear-gradient(150deg, ${INK} 0%, ${INK_2} 100%)` }}
@@ -92,82 +94,19 @@ const CoverPlaceholder = ({ label, className = "" }) => (
   </div>
 );
 
-/* ---------------------------------------------------------------- */
-/*  Placeholder content                                              */
-/*  Swap this array for real posts from your CMS/API — each object   */
-/*  is shaped so that's a drop-in replacement later.                 */
-/* ---------------------------------------------------------------- */
-
-const CATEGORIES = ["All", "Web Development", "AI & Automation", "Design", "Marketing", "Company News"];
-
-const POSTS = [
-  {
-    slug: "designing-systems-that-scale",
-    category: "Web Development",
-    title: "Designing systems that scale before you need them to",
-    excerpt: "Why the architecture decisions you make in week one are the ones you'll live with for years — and how we approach them differently.",
-    date: "2026-08-12",
-    readMins: 6,
-    featured: true,
-  },
-  {
-    slug: "where-ai-actually-helps",
-    category: "AI & Automation",
-    title: "Where AI actually helps in a normal business (and where it doesn't)",
-    excerpt: "Not every workflow needs a model. A practical look at which processes are worth automating first.",
-    date: "2026-07-28",
-    readMins: 5,
-  },
-  {
-    slug: "brand-identity-beyond-the-logo",
-    category: "Design",
-    title: "Brand identity is more than a logo file",
-    excerpt: "What actually goes into a design system that holds up across a website, an app, and a stack of print materials.",
-    date: "2026-07-15",
-    readMins: 4,
-  },
-  {
-    slug: "seo-basics-that-still-matter",
-    category: "Marketing",
-    title: "The SEO fundamentals that still matter in 2026",
-    excerpt: "Search has changed a lot. These basics, somehow, haven't.",
-    date: "2026-06-30",
-    readMins: 7,
-  },
-  {
-    slug: "reading-a-dashboard-without-a-data-team",
-    category: "AI & Automation",
-    title: "How to read a data dashboard without a data science degree",
-    excerpt: "A short guide to the metrics that actually predict where your business is headed.",
-    date: "2026-06-18",
-    readMins: 5,
-  },
-  {
-    slug: "atx-base-welcomes-new-team-members",
-    category: "Company News",
-    title: "A few new faces on the ATX Base team",
-    excerpt: "Introducing the newest additions to our engineering and design team.",
-    date: "2026-06-02",
-    readMins: 2,
-  },
-  {
-    slug: "choosing-native-vs-cross-platform",
-    category: "Web Development",
-    title: "Native vs. cross-platform: how we actually decide",
-    excerpt: "The honest trade-offs behind choosing Kotlin, React Native, or something else entirely for your next app.",
-    date: "2026-05-21",
-    readMins: 6,
-  },
-];
-
-const formatDate = (iso) =>
-  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+// Renders the real cover image when a post has one, otherwise the placeholder.
+const Cover = ({ post, className = "" }) =>
+  post.cover ? (
+    <img src={post.cover} alt={post.title} className={`w-full h-full object-cover ${className}`} />
+  ) : (
+    <CoverPlaceholder label={post.category} className={className} />
+  );
 
 /* ---------------------------------------------------------------- */
 /*  Page                                                              */
 /* ---------------------------------------------------------------- */
 
-export default function NewsBlog() {
+export default function News() {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const featured = useMemo(() => POSTS.find((p) => p.featured) || POSTS[0], []);
@@ -213,11 +152,11 @@ export default function NewsBlog() {
         <div className="mx-auto max-w-6xl px-6 md:px-10">
           <Reveal
             as={Link}
-            to={`/news&blog/${featured.slug}`}
+            to={`/news/${featured.slug}`}
             className="group grid lg:grid-cols-2 gap-0 rounded-[26px] overflow-hidden border border-black/5 shadow-sm hover:shadow-xl transition-shadow"
           >
             <div className="h-64 lg:h-full">
-              <CoverPlaceholder label={featured.category} className="h-full" />
+              <Cover post={featured} className="h-full" />
             </div>
             <div className="p-8 md:p-10 flex flex-col justify-center bg-[#f5f7fb]">
               <span
@@ -272,12 +211,12 @@ export default function NewsBlog() {
                 <Reveal
                   key={post.slug}
                   as={Link}
-                  to={`/news&blog/${post.slug}`}
+                  to={`/news/${post.slug}`}
                   className="group rounded-2xl overflow-hidden border border-black/5 hover:shadow-lg transition-shadow flex flex-col"
                   style={{ transitionDelay: `${(i % 3) * 70}ms` }}
                 >
                   <div className="h-44">
-                    <CoverPlaceholder label={post.category} className="h-full" />
+                    <Cover post={post} className="h-full" />
                   </div>
                   <div className="p-6 flex flex-col flex-1">
                     <span

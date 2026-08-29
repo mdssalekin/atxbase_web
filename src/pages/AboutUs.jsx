@@ -285,7 +285,7 @@ export default function AboutUs() {
           >
             <span className="inline-block h-10 w-10 rounded-xl border border-white/20" style={{ background: "rgba(255,255,255,.06)" }} />
             <h3 className="mt-6 text-[20px] font-semibold text-white">Our Vision</h3>
-            <p className="mt-3 text-[15px] text-white/65 leading-relaxed">
+            <p className="mt-3 text-[15px] text-white/80 leading-relaxed">
               To be the technology partner ambitious companies call first — known as much for how we work as for what we build.
             </p>
           </Reveal>

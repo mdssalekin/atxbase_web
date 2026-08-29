@@ -171,7 +171,7 @@ export default function Works() {
                 >
                   <div className="h-44">
                     {project.cover ? (
-                      <img src={project.cover} alt={project.title} className="w-full h-full object-cover" />
+                      <img src={project.cover} alt={project.title} className="w-full h-full object-contain" />
                     ) : (
                       <CoverPlaceholder label={project.category} className="h-full" />
                     )}
@@ -224,7 +224,7 @@ export default function Works() {
           <h2 className="mt-5 text-white font-bold text-[26px] md:text-[36px] leading-tight">
             Want to see your work in this list?
           </h2>
-          <p className="mt-4 text-white/65 text-[15.5px] leading-relaxed">
+          <p className="mt-4 text-white/80 text-[15.5px] leading-relaxed">
             Tell us what you&rsquo;re building — we&rsquo;ll tell you how we&rsquo;d approach it.
           </p>
           <Link
