@@ -18,7 +18,7 @@ import Works from './pages/Works';
 import Workdetail from './pages/projects/Workdetail';
 
 import News from './pages/News';
-import NewsDetail from './pages/news/Newsdetail';
+import NewsDetail from './pages/news/NewsDetail';
 
 function App() {
   return (
