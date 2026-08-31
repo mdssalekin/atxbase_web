@@ -66,7 +66,7 @@ const Header = () => {
   // If the viewport is resized past the desktop breakpoint while the
   // mobile drawer is open, close it so it can't get stuck open.
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1000px)");
+    const mq = window.matchMedia("(min-width: 1010px)");
     const onChange = (e) => e.matches && setMobileOpen(false);
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
@@ -129,7 +129,7 @@ const Header = () => {
             </button>
 
             {/* desktop links */}
-            <nav className="hidden min-[1000px]:flex items-center gap-1">
+            <nav className="hidden min-[1010px]:flex items-center gap-1">
               {menuItems.map((item) =>
                 item.children ? (
                   <div key={item.path} className="group relative">
@@ -211,7 +211,7 @@ const Header = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => navigate("/contact-us")}
-                className="hidden min-[1000px]:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13.5px] font-semibold text-white shadow-md transition-transform duration-200 hover:-translate-y-0.5"
+                className="hidden min-[1010px]:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13.5px] font-semibold text-white shadow-md transition-transform duration-200 hover:-translate-y-0.5"
                 style={{ background: `linear-gradient(115deg, ${BLUE}, ${TEAL})` }}
               >
                 Start a Project
@@ -220,7 +220,7 @@ const Header = () => {
               {/* animated hamburger → close */}
               <button
                 onClick={() => setMobileOpen(true)}
-                className="min-[1000px]:hidden relative h-10 w-10 flex flex-col items-center justify-center gap-[5px]"
+                className="min-[1010px]:hidden relative h-10 w-10 flex flex-col items-center justify-center gap-[5px]"
                 aria-label="Open menu"
                 aria-expanded={mobileOpen}
               >
@@ -238,7 +238,7 @@ const Header = () => {
 
       {/* ============= MOBILE DRAWER ============= */}
       <div
-        className={`min-[1000px]:hidden fixed inset-0 z-[60] transition-opacity duration-300 ${
+        className={`min-[1010px]:hidden fixed inset-0 z-[60] transition-opacity duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -364,7 +364,7 @@ const Header = () => {
                           key={child.path ?? `/${child.slug}`}
                           to={child.path ?? `/${child.slug}`}
                           onClick={() => setMobileOpen(false)}
-                          className="py-2 text-[14.5px] text-white/65 hover:text-white transition-colors"
+                          className="py-2 text-[14.5px] text-white/80 hover:text-white transition-colors"
                         >
                           {child.label}
                         </NavLink>
