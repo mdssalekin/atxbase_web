@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "./assets/logo atx.png";
+import { PRODUCTS_LINKS } from "../pages/products/ProductData";
 
 // Sub-links shown in the Services dropdown (desktop) / accordion (mobile).
 // Route slugs assume each of these lives at /services/<slug> — update the
@@ -17,6 +18,7 @@ const SERVICE_LINKS = [
 const menuItems = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services", children: SERVICE_LINKS },
+  { label: "Products", path: "/products", children: PRODUCTS_LINKS },
   { label: "About Us", path: "/about-us" },
   { label: "News", path: "/news" },
   { label: "Contact Us", path: "/contact-us" },
@@ -35,7 +37,10 @@ const TEAL = "#17c3a2";
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  // Which dropdown item is expanded in the mobile accordion, tracked by its
+  // `path` — a single value rather than one boolean per item, so Services
+  // and Products (and anything added later) can't end up sharing state.
+  const [openMobileItem, setOpenMobileItem] = useState(null);
   const navigate = useNavigate();
   const drawerRef = useRef(null);
 
@@ -61,16 +66,16 @@ const Header = () => {
   // If the viewport is resized past the desktop breakpoint while the
   // mobile drawer is open, close it so it can't get stuck open.
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 950px)");
+    const mq = window.matchMedia("(min-width: 1000px)");
     const onChange = (e) => e.matches && setMobileOpen(false);
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
-  // Collapse the mobile Services accordion whenever the drawer itself closes,
-  // so it doesn't reopen already-expanded next time.
+  // Collapse whichever mobile accordion is open whenever the drawer itself
+  // closes, so it doesn't reopen already-expanded next time.
   useEffect(() => {
-    if (!mobileOpen) setMobileServicesOpen(false);
+    if (!mobileOpen) setOpenMobileItem(null);
   }, [mobileOpen]);
 
   const goHome = () => {
@@ -124,7 +129,7 @@ const Header = () => {
             </button>
 
             {/* desktop links */}
-            <nav className="hidden min-[885px]:flex items-center gap-1">
+            <nav className="hidden min-[1000px]:flex items-center gap-1">
               {menuItems.map((item) =>
                 item.children ? (
                   <div key={item.path} className="group relative">
@@ -163,8 +168,8 @@ const Header = () => {
                       <div className="w-64 rounded-2xl border border-black/5 bg-white shadow-[0_20px_45px_-15px_rgba(10,15,36,0.25)] p-2">
                         {item.children.map((child) => (
                           <NavLink
-                            key={child.path}
-                            to={child.path}
+                            key={child.path ?? `/${child.slug}`}
+                            to={child.path ?? `/${child.slug}`}
                             className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-[13.5px] font-medium text-[#3a4258] hover:bg-[#f5f7fb] hover:text-[#0a0f24] transition-colors"
                           >
                             {child.label}
@@ -206,7 +211,7 @@ const Header = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => navigate("/contact-us")}
-                className="hidden min-[885px]:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13.5px] font-semibold text-white shadow-md transition-transform duration-200 hover:-translate-y-0.5"
+                className="hidden min-[1000px]:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13.5px] font-semibold text-white shadow-md transition-transform duration-200 hover:-translate-y-0.5"
                 style={{ background: `linear-gradient(115deg, ${BLUE}, ${TEAL})` }}
               >
                 Start a Project
@@ -215,7 +220,7 @@ const Header = () => {
               {/* animated hamburger → close */}
               <button
                 onClick={() => setMobileOpen(true)}
-                className="min-[885px]:hidden relative h-10 w-10 flex flex-col items-center justify-center gap-[5px]"
+                className="min-[1000px]:hidden relative h-10 w-10 flex flex-col items-center justify-center gap-[5px]"
                 aria-label="Open menu"
                 aria-expanded={mobileOpen}
               >
@@ -233,7 +238,7 @@ const Header = () => {
 
       {/* ============= MOBILE DRAWER ============= */}
       <div
-        className={`min-[885px]:hidden fixed inset-0 z-[60] transition-opacity duration-300 ${
+        className={`min-[1000px]:hidden fixed inset-0 z-[60] transition-opacity duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -280,11 +285,51 @@ const Header = () => {
           </div>
 
           <nav className="flex-1 px-6 mt-6 flex flex-col gap-1 pb-4">
-            {menuItems.map((item, i) =>
-              item.children ? (
+            {menuItems.map((item, i) => {
+              if (!item.children) {
+                return (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    end
+                    onClick={() => setMobileOpen(false)}
+                    className="group flex items-center gap-4 py-3.5 border-b border-white/10"
+                    style={{
+                      transitionDelay: mobileOpen ? `${i * 60}ms` : "0ms",
+                      opacity: mobileOpen ? 1 : 0,
+                      transform: mobileOpen ? "translateX(0)" : "translateX(24px)",
+                      transition: "opacity .4s ease, transform .4s ease",
+                    }}
+                  >
+                    {({ isActive }) => (
+                      <>
+                        <span
+                          className="font-mono text-[11px] tracking-widest"
+                          style={{ color: isActive ? TEAL : "rgba(255,255,255,.35)" }}
+                        >
+                          0{i + 1}
+                        </span>
+                        <span
+                          className="text-lg font-semibold tracking-tight transition-colors"
+                          style={{ color: isActive ? "#fff" : "rgba(255,255,255,.75)" }}
+                        >
+                          {item.label}
+                        </span>
+                      </>
+                    )}
+                  </NavLink>
+                );
+              }
+
+              // Dropdown item (Services, Products, ...) — each one checks its
+              // OWN path against openMobileItem, so opening one can never
+              // affect any other.
+              const isOpen = openMobileItem === item.path;
+
+              return (
                 <div key={item.path} className="border-b border-white/10">
                   <button
-                    onClick={() => setMobileServicesOpen((v) => !v)}
+                    onClick={() => setOpenMobileItem((prev) => (prev === item.path ? null : item.path))}
                     className="w-full flex items-center justify-between gap-4 py-3.5"
                     style={{
                       transitionDelay: mobileOpen ? `${i * 60}ms` : "0ms",
@@ -292,7 +337,7 @@ const Header = () => {
                       transform: mobileOpen ? "translateX(0)" : "translateX(24px)",
                       transition: "opacity .4s ease, transform .4s ease",
                     }}
-                    aria-expanded={mobileServicesOpen}
+                    aria-expanded={isOpen}
                   >
                     <span className="flex items-center gap-4">
                       <span className="font-mono text-[11px] tracking-widest" style={{ color: "rgba(255,255,255,.35)" }}>
@@ -302,7 +347,7 @@ const Header = () => {
                     </span>
                     <svg
                       viewBox="0 0 12 8"
-                      className={`h-[8px] w-[12px] transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`}
+                      className={`h-[8px] w-[12px] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                       fill="none"
                     >
                       <path d="M1 1.5 6 6.5 11 1.5" stroke="rgba(255,255,255,.6)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -311,13 +356,13 @@ const Header = () => {
 
                   <div
                     className="overflow-hidden transition-all duration-300 ease-out"
-                    style={{ maxHeight: mobileServicesOpen ? item.children.length * 48 + 16 : 0 }}
+                    style={{ maxHeight: isOpen ? item.children.length * 48 + 16 : 0 }}
                   >
                     <div className="flex flex-col gap-1 pb-4 pl-11">
                       {item.children.map((child) => (
                         <NavLink
-                          key={child.path}
-                          to={child.path}
+                          key={child.path ?? `/${child.slug}`}
+                          to={child.path ?? `/${child.slug}`}
                           onClick={() => setMobileOpen(false)}
                           className="py-2 text-[14.5px] text-white/65 hover:text-white transition-colors"
                         >
@@ -327,39 +372,8 @@ const Header = () => {
                     </div>
                   </div>
                 </div>
-              ) : (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  end
-                  onClick={() => setMobileOpen(false)}
-                  className="group flex items-center gap-4 py-3.5 border-b border-white/10"
-                  style={{
-                    transitionDelay: mobileOpen ? `${i * 60}ms` : "0ms",
-                    opacity: mobileOpen ? 1 : 0,
-                    transform: mobileOpen ? "translateX(0)" : "translateX(24px)",
-                    transition: "opacity .4s ease, transform .4s ease",
-                  }}
-                >
-                  {({ isActive }) => (
-                    <>
-                      <span
-                        className="font-mono text-[11px] tracking-widest"
-                        style={{ color: isActive ? TEAL : "rgba(255,255,255,.35)" }}
-                      >
-                        0{i + 1}
-                      </span>
-                      <span
-                        className="text-lg font-semibold tracking-tight transition-colors"
-                        style={{ color: isActive ? "#fff" : "rgba(255,255,255,.75)" }}
-                      >
-                        {item.label}
-                      </span>
-                    </>
-                  )}
-                </NavLink>
-              )
-            )}
+              );
+            })}
           </nav>
 
           <div className="px-6 pb-8 pt-4 shrink-0">

@@ -158,3 +158,4 @@ export const getRelatedPosts = (slug, limit = 3) => {
   const others = POSTS.filter((p) => p.slug !== slug && p.category !== current.category);
   return [...sameCategory, ...others].slice(0, limit);
 };
+

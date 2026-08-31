@@ -20,6 +20,9 @@ import Workdetail from './pages/projects/Workdetail';
 import News from './pages/News';
 import NewsDetail from './pages/news/NewsDetail';
 
+import Products from './pages/products/Products';
+import ProductDetails from './pages/products/ProductDetails';
+
 function App() {
   return (
     <>
@@ -32,10 +35,17 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/about-us' element={<AboutUs />} />
           <Route path='contact-us' element={<ContactUs />} />
+
           <Route path='/news' element={<News />} />
           <Route path='/news/:slug' element={<NewsDetail />} />
+
           <Route path='/works' element={<Works />} />
           <Route path="/works/:slug" element={<Workdetail />} />
+          
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:slug" element={<ProductDetails />} />
+
+
           <Route path="/services" element={<Services />} />
           <Route path="/services/digital-marketing" element={<DigitalMark />} />
           <Route path ='/services/application-development' element={<AppDev />} />
@@ -44,6 +54,8 @@ function App() {
           <Route path="/services/ai-&-automation" element={<AI />} />
           <Route path="/services/data-science" element={<DataScience />} />
           <Route path="/services/graphic-design" element={<GraphicDesign />} />
+
+          
         </Routes>
         <Footer />
       </BrowserRouter>
