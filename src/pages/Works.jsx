@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { CATEGORIES, PROJECTS } from "./projects/Worksdata";
+import atxBaseBackground from "./assets/atx-base-background.png";
 
 /** Brand tokens — mirror Header.jsx / Home.jsx / Services.jsx / Footer.jsx */
 const INK = "#0a0f24";
@@ -109,11 +110,9 @@ export default function Works() {
     <div className="w-full overflow-x-hidden">
       {/* ============= HERO ============= */}
       <section
-        className="relative overflow-hidden"
+        className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{
-          background: `radial-gradient(1000px 480px at 85% -10%, rgba(46,111,242,.22), transparent 60%),
-                       radial-gradient(800px 420px at 5% 110%, rgba(23,195,162,.14), transparent 55%),
-                       linear-gradient(180deg, ${INK} 0%, ${INK_2} 100%)`,
+          backgroundImage: `url(${atxBaseBackground})`,
         }}
       >
         <PixelTrail className="absolute top-10 right-10 hidden md:flex" />

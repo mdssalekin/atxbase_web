@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PRODUCTS } from "./ProductData";
+import atxBaseBackground from "../assets/atx-base-background.png";
 
 /** Brand tokens — mirror Header.jsx / Home.jsx / Services.jsx / Footer.jsx */
 const INK = "#0a0f24";
@@ -34,13 +35,8 @@ function useReveal() {
   return [ref, visible];
 }
 
-type RevealProps = {
-  as?: React.ElementType;
-  className?: string;
-  children?: React.ReactNode;
-} & React.HTMLAttributes<HTMLElement>;
 
-const Reveal = ({ as: Tag = "div", className = "", children, ...rest }: RevealProps) => {
+const Reveal = ({ as: Tag = "div", className = "", children, ...rest }) => {
   const [ref, visible] = useReveal();
   return (
     <Tag
@@ -55,13 +51,8 @@ const Reveal = ({ as: Tag = "div", className = "", children, ...rest }: RevealPr
   );
 };
 
-type EyebrowProps = {
-  children?: React.ReactNode;
-  tone?: "light" | "dark";
-  center?: boolean;
-};
 
-const Eyebrow = ({ children, tone = "light", center = false }: EyebrowProps) => (
+const Eyebrow = ({ children, tone = "light", center = false }) => (
   <div
     className={`inline-flex items-center gap-2.5 font-mono text-[12px] font-medium tracking-[0.18em] uppercase ${
       center ? "justify-center" : ""
@@ -73,12 +64,7 @@ const Eyebrow = ({ children, tone = "light", center = false }: EyebrowProps) => 
   </div>
 );
 
-type PixelTrailProps = {
-  sizes?: number[];
-  className?: string;
-};
-
-const PixelTrail = ({ sizes = [22, 17, 12, 9], className = "" }: PixelTrailProps) => (
+const PixelTrail = ({ sizes = [22, 17, 12, 9], className = "" }) => (
   <div className={`pointer-events-none flex flex-col items-end gap-2 ${className}`}>
     {sizes.map((s, i) => (
       <span
@@ -103,17 +89,10 @@ const Check = () => (
   </svg>
 );
 
-type ProductCoverProps = {
-  product: {
-    name: string;
-    cover?: string | null;
-  };
-  className?: string;
-};
 
 // Product photo slot — renders the real cover when set, otherwise a
 // labeled placeholder panel instead of a broken <img>.
-export const ProductCover = ({ product, className = "" }: ProductCoverProps) => (
+export const ProductCover = ({ product, className = "" }) => (
   <div className={`relative w-full aspect-[4/3] rounded-[26px] overflow-hidden border border-black/5 shadow-xl ${className}`}>
     {product.cover ? (
       <img src={product.cover} alt={product.name} className="w-full h-full object-cover" />
@@ -147,11 +126,9 @@ export default function Products() {
     <div className="w-full overflow-x-hidden">
       {/* ============= HERO ============= */}
       <section
-        className="relative overflow-hidden"
+        className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{
-          background: `radial-gradient(1000px 480px at 85% -10%, rgba(46,111,242,.22), transparent 60%),
-                       radial-gradient(800px 420px at 5% 110%, rgba(23,195,162,.14), transparent 55%),
-                       linear-gradient(180deg, ${INK} 0%, ${INK_2} 100%)`,
+          backgroundImage: `url(${atxBaseBackground})`,
         }}
       >
         <PixelTrail className="absolute top-10 right-10 hidden md:flex" />

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-
+import homeFirst from "./assets/home-1.png";
+import homeSecond from "./assets/atx-base-process.png";
 /**
  * Shared brand tokens — mirror the values used in Header.jsx.
  * Worth lifting into a single `theme.js` once more pages use them.
@@ -212,30 +213,59 @@ export default function Home() {
 
           {/* abstract product-frame visual — no external asset required */}
           <Reveal className="relative hidden lg:flex items-center justify-center">
-            <PixelTrail className="absolute -top-6 -right-2" />
-            <div
-              className="relative w-full max-w-[420px] rounded-[28px] border border-white/10 p-3 shadow-2xl"
-              style={{ background: "linear-gradient(155deg, rgba(255,255,255,.07), rgba(255,255,255,.02))" }}
-            >
-              <div className="flex items-center gap-1.5 px-2 pb-3 pt-1">
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-              </div>
-              <div className="rounded-2xl bg-white/[0.04] p-5 space-y-4">
-                <div className="h-3 w-2/3 rounded-full" style={{ background: GRADIENT, opacity: 0.85 }} />
-                <div className="h-2.5 w-full rounded-full bg-white/10" />
-                <div className="h-2.5 w-5/6 rounded-full bg-white/10" />
-                <div className="grid grid-cols-3 gap-3 pt-2">
-                  <div className="h-20 rounded-xl bg-white/[0.06] border border-white/10" />
-                  <div className="h-20 rounded-xl border border-white/10" style={{ background: "linear-gradient(155deg, rgba(46,111,242,.25), rgba(23,195,162,.15))" }} />
-                  <div className="h-20 rounded-xl bg-white/[0.06] border border-white/10" />
+
+            <div className="relative z-10 w-full max-w-[440px]">
+              {/* Soft ambient glow behind the image */}
+              <div
+                className="absolute -inset-6 rounded-[40px] blur-3xl opacity-20"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(46,111,242,.8), rgba(23,195,162,.7))",
+                }}
+              />
+
+              {/* Image frame */}
+              <div
+                className="relative overflow-hidden rounded-[28px] border border-white/10 p-2 shadow-2xl"
+                style={{
+                  background:
+                    "linear-gradient(155deg, rgba(255,255,255,.09), rgba(255,255,255,.025))",
+                }}
+              >
+                <div className="relative overflow-hidden rounded-[22px]">
+                  <img
+                    src= {homeFirst}
+                    alt="ATX Base technology environment"
+                    className="block w-full h-[560px] object-cover object-center"
+                  />
+
+                  {/* Subtle gradient overlay */}
+                  <div
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(7,16,32,0) 55%, rgba(7,16,32,.28) 100%)",
+                    }}
+                  />
                 </div>
-                <div className="flex gap-3 pt-1">
-                  <div className="h-8 w-24 rounded-full" style={{ background: GRADIENT }} />
-                  <div className="h-8 w-16 rounded-full bg-white/10" />
-                </div>
               </div>
+
+              {/* Small decorative element */}
+              <div
+                className="absolute -bottom-5 -left-5 h-16 w-16 rounded-2xl border border-white/10 backdrop-blur-md"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(46,111,242,.22), rgba(23,195,162,.14))",
+                }}
+              />
+
+              <div
+                className="absolute -top-5 -right-5 h-12 w-12 rounded-full border border-white/10"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(46,111,242,.25), rgba(23,195,162,.18))",
+                }}
+              />
             </div>
           </Reveal>
         </div>
@@ -295,42 +325,167 @@ export default function Home() {
       </section>
 
       {/* ============= PROCESS ============= */}
-      <section id="process" className="py-28 md:py-32" style={{ background: INK }}>
+      <section
+        id="process"
+        className="py-28 md:py-32 overflow-hidden"
+        style={{ background: INK }}
+      >
         <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <Reveal className="max-w-xl mb-16">
-            <Eyebrow tone="dark">How we work</Eyebrow>
-            <h2 className="mt-4 text-[28px] md:text-[40px] font-bold leading-tight text-white">
-              From brief to launch, and beyond.
-            </h2>
-            <p className="mt-4 text-[16.5px] text-white/60 leading-relaxed">
-              The same five-stage path runs under every engagement, whether it&rsquo;s a five-page site or a full product build.
-            </p>
-          </Reveal>
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-16 xl:gap-24 items-start">
 
-          <div className="relative">
-            <div className="absolute left-[27px] top-2 bottom-2 w-px bg-gradient-to-b from-white/20 to-transparent" />
-            {PROCESS.map((p) => (
-              <Reveal
-                key={p.n}
-                className="grid grid-cols-[56px_1fr] gap-7 py-7 border-b border-white/10 last:border-none"
-              >
-                <div
-                  className="relative z-10 h-14 w-14 rounded-full border border-white/10 flex items-center justify-center font-mono text-sm font-semibold"
-                  style={{ background: INK_2, color: "#8fb4ff" }}
-                >
-                  {p.n}
-                </div>
-                <div>
-                  <div className="flex items-baseline gap-4 flex-wrap">
-                    <h3 className="text-white text-xl font-semibold">{p.title}</h3>
-                    <span className="font-mono text-[11px] tracking-[0.08em] uppercase" style={{ color: TEAL }}>
-                      {p.when}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-[15px] text-white/60 leading-relaxed max-w-[60ch]">{p.desc}</p>
-                </div>
+            {/* LEFT — PROCESS */}
+            <div>
+              <Reveal className="max-w-xl mb-12 md:mb-14">
+                <Eyebrow tone="dark">How we work</Eyebrow>
+
+                <h2 className="mt-4 text-[28px] md:text-[40px] font-bold leading-tight text-white">
+                  From brief to launch, and beyond.
+                </h2>
+
+                <p className="mt-4 text-[16.5px] text-white/60 leading-relaxed">
+                  The same five-stage path runs under every engagement, whether it&rsquo;s
+                  a five-page site or a full product build.
+                </p>
               </Reveal>
-            ))}
+
+              <div className="relative">
+                {/* Timeline line */}
+                <div
+                  className="absolute left-[27px] top-2 bottom-2 w-px"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, rgba(255,255,255,.2), rgba(255,255,255,0))",
+                  }}
+                />
+
+                {PROCESS.map((p) => (
+                  <Reveal
+                    key={p.n}
+                    className="relative grid grid-cols-[56px_1fr] gap-7 py-7 border-b border-white/10 last:border-none"
+                  >
+                    {/* Number */}
+                    <div
+                      className="relative z-10 h-14 w-14 rounded-full border border-white/10 flex items-center justify-center font-mono text-sm font-semibold"
+                      style={{
+                        background: INK_2,
+                        color: "#8fb4ff",
+                        boxShadow: "0 0 0 6px rgba(7,16,32,.9)",
+                      }}
+                    >
+                      {p.n}
+                    </div>
+
+                    {/* Content */}
+                    <div className="pt-0.5">
+                      <div className="flex items-baseline gap-4 flex-wrap">
+                        <h3 className="text-white text-xl font-semibold">
+                          {p.title}
+                        </h3>
+
+                        <span
+                          className="font-mono text-[11px] tracking-[0.08em] uppercase"
+                          style={{ color: TEAL }}
+                        >
+                          {p.when}
+                        </span>
+                      </div>
+
+                      <p className="mt-2 text-[15px] text-white/60 leading-relaxed max-w-[60ch]">
+                        {p.desc}
+                      </p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT — IMAGE */}
+            <Reveal className="relative lg:sticky lg:top-28">
+              <div className="relative mx-auto w-full max-w-[500px]">
+
+                {/* Ambient glow */}
+                <div
+                  className="absolute -inset-8 rounded-[50px] blur-3xl opacity-20"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(46,111,242,.8), rgba(23,195,162,.65))",
+                  }}
+                />
+
+                {/* Decorative grid */}
+                <div
+                  className="absolute -top-8 -right-8 h-32 w-32 opacity-30"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px)",
+                    backgroundSize: "16px 16px",
+                    maskImage:
+                      "linear-gradient(to bottom left, black, transparent)",
+                    WebkitMaskImage:
+                      "linear-gradient(to bottom left, black, transparent)",
+                  }}
+                />
+
+                {/* Image container */}
+                <div
+                  className="relative overflow-hidden rounded-[32px] border border-white/10 p-2 shadow-2xl"
+                  style={{
+                    background:
+                      "linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025))",
+                  }}
+                >
+                  <div className="relative overflow-hidden rounded-[25px]">
+
+                    <img
+                      src={homeSecond}
+                      alt="ATX Base technology and digital development"
+                      className="block w-full h-[560px] xl:h-[620px] object-cover object-center"
+                    />
+
+                    {/* Dark cinematic overlay */}
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(7,16,32,.02) 35%, rgba(7,16,32,.55) 100%)",
+                      }}
+                    />
+
+                    {/* Bottom accent */}
+                    <div
+                      className="absolute bottom-0 left-0 right-0 h-[3px]"
+                      style={{ background: GRADIENT }}
+                    />
+                  </div>
+                </div>
+
+                {/* Floating accent */}
+                <div
+                  className="absolute -bottom-6 -left-6 h-20 w-20 rounded-2xl border border-white/10 backdrop-blur-md"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(46,111,242,.24), rgba(23,195,162,.14))",
+                  }}
+                >
+                  <div className="flex h-full items-center justify-center">
+                    <div
+                      className="h-3 w-3 rounded-full"
+                      style={{ background: GRADIENT }}
+                    />
+                  </div>
+                </div>
+
+                {/* Small top-right accent */}
+                <div
+                  className="absolute -top-5 -right-5 h-11 w-11 rounded-full border border-white/10"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(46,111,242,.3), rgba(23,195,162,.18))",
+                  }}
+                />
+              </div>
+            </Reveal>
+
           </div>
         </div>
       </section>

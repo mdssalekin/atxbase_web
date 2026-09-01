@@ -1,12 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-
-// TODO: once you have real photos/screenshots for each section, import them
-// here and pass as the `image` prop on the matching <ServiceSection>, e.g.:
-//   import webAppPhoto from "./assets/web-application-development.jpg";
-//   <ServiceSection ... image={webAppPhoto} />
-// Leaving `image` unset (as below) renders a labeled placeholder instead
-// of a broken <img>, so the page looks finished either way.
+import webAppPhoto from './assets/web-development.png';
+import desktopAppPhoto from './assets/desktop-development.png';
+import mobileAppPhoto from './assets/mobile-development.png';
 
 /** Brand tokens — mirror Header.jsx / Home.jsx / Services.jsx / Footer.jsx */
 const INK = "#0a0f24";
@@ -97,7 +93,7 @@ const Check = () => (
 const ImageSlot = ({ src, alt, icon }) => (
   <div className="relative w-full aspect-[4/3] rounded-[26px] overflow-hidden border border-black/5 shadow-xl">
     {src ? (
-      <img src={src} alt={alt} className="w-full h-full object-cover" />
+      <img src={src} alt={alt} className="w-full h-full object-fill" />
     ) : (
       <div
         className="w-full h-full flex flex-col items-center justify-center gap-3 text-center px-8"
@@ -138,6 +134,7 @@ const SECTIONS = [
     ],
     icon: "M4 4h24v24H4zM4 12h24M12 12v16",
     imgAlt: "Web application dashboard screenshot",
+    image: webAppPhoto,
   },
   {
     id: "computer-application",
@@ -154,6 +151,7 @@ const SECTIONS = [
     ],
     icon: "M4 5h24v16H4zM12 26h8M16 21v5",
     imgAlt: "Desktop application interface screenshot",
+    image: desktopAppPhoto,
   },
   {
     id: "mobile-application",
@@ -170,6 +168,7 @@ const SECTIONS = [
     ],
     icon: "M11 3h10v26H11zM16 25.5h.01",
     imgAlt: "Mobile application screens on a phone",
+    image: mobileAppPhoto,
   },
 ];
 
@@ -222,7 +221,7 @@ export default function AppDev() {
             <div className="mx-auto max-w-6xl px-6 md:px-10">
               <div className={`grid lg:grid-cols-2 gap-12 items-center ${flip ? "lg:[&>*:first-child]:order-2" : ""}`}>
                 <Reveal>
-                  <ImageSlot alt={s.imgAlt} icon={s.icon} />
+                  <ImageSlot src={s.image} alt={s.imgAlt} icon={s.icon} />
                 </Reveal>
 
                 <Reveal style={{ transitionDelay: "80ms" }}>
@@ -268,7 +267,7 @@ export default function AppDev() {
           <h2 className="mt-5 text-white font-bold text-[26px] md:text-[36px] leading-tight">
             Tell us what you&rsquo;re building.
           </h2>
-          <p className="mt-4 text-white/65 text-[15.5px] leading-relaxed">
+          <p className="mt-4 text-white/80 text-[15.5px] leading-relaxed">
             Web, desktop, or mobile — we&rsquo;ll help you figure out which one actually fits the problem.
           </p>
           <Link

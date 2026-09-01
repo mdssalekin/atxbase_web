@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getProjectBySlug, getRelatedProjects } from "./Worksdata";
 import { CoverPlaceholder } from "../Works";
-
+import atxBaseBackground from "../assets/atx-base-background.png";
 /** Brand tokens — mirror Header.jsx / Home.jsx / Services.jsx / Footer.jsx */
 const INK = "#0a0f24";
 const INK_2 = "#111a36";
@@ -105,15 +105,14 @@ export default function WorkDetail() {
     <div className="w-full overflow-x-hidden">
       {/* ============= HERO ============= */}
       <section
-        className="relative overflow-hidden"
+        className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{
-          background: `radial-gradient(1000px 480px at 85% -10%, rgba(46,111,242,.22), transparent 60%),
-                       linear-gradient(180deg, ${INK} 0%, ${INK_2} 100%)`,
+          backgroundImage: `url(${atxBaseBackground})`,
         }}
       >
         <div className="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-24">
           <Reveal>
-            <Link to="/works" className="inline-flex items-center gap-2 text-[13px] font-medium text-white/60 hover:text-white transition-colors">
+            <Link to="/works" className="inline-flex items-center gap-2 text-[13px] font-medium text-white/80 hover:text-white transition-colors">
               <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12.5 15 7.5 10l5-5" />
               </svg>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
+import atxBaseBackground from "./assets/atx-base-background.png";
 /** Brand tokens — mirror Header.jsx / Home.jsx / Footer.jsx / AboutUs.jsx */
 const INK = "#0a0f24";
 const INK_2 = "#111a36";
@@ -80,17 +80,17 @@ const PixelTrail = ({ sizes = [22, 17, 12, 9], className = "" }) => (
 const SOCIALS = [
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/atx-base",
     path: "M6.94 8.5H4.06V19H6.94V8.5ZM5.5 7.25A1.65 1.65 0 1 0 5.5 4a1.65 1.65 0 0 0 0 3.25ZM19.94 19H17.1v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V19H10.2V8.5h2.72v1.43h.04c.38-.72 1.3-1.48 2.68-1.48 2.87 0 3.3 1.89 3.3 4.34V19Z",
   },
   {
     label: "X",
-    href: "#",
+    href: "https://www.x.com/atxbase",
     path: "M4 4l7.2 9.3L4.3 20h1.9l6.1-6.6 4.7 6.6H20l-7.5-9.9L19.1 4h-1.9l-5.6 6.1L8.4 4H4Zm2.8 1.5h2l8.4 11.9h-2L6.8 5.5Z",
   },
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/atxbase",
     path: "M13.5 20v-6.9h2.3l.35-2.7h-2.65V8.7c0-.78.22-1.32 1.34-1.32h1.43V5a19 19 0 0 0-2.08-.1c-2.06 0-3.47 1.26-3.47 3.56v1.98H8.4v2.7h2.35V20h2.75Z",
   },
 ];
@@ -164,11 +164,9 @@ export default function ContactUs() {
     <div className="w-full overflow-x-hidden">
       {/* ============= HERO ============= */}
       <section
-        className="relative overflow-hidden"
+        className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{
-          background: `radial-gradient(1000px 480px at 85% -10%, rgba(46,111,242,.22), transparent 60%),
-                       radial-gradient(800px 420px at 5% 110%, rgba(23,195,162,.14), transparent 55%),
-                       linear-gradient(180deg, ${INK} 0%, ${INK_2} 100%)`,
+          backgroundImage: `url(${atxBaseBackground})`,
         }}
       >
         <PixelTrail className="absolute top-10 right-10 hidden md:flex" />
@@ -308,24 +306,24 @@ export default function ContactUs() {
               <Eyebrow tone="dark">Get in touch</Eyebrow>
               <ul className="mt-6 space-y-5">
                 <li>
-                  <p className="text-[12px] font-mono uppercase tracking-widest text-white/40">Email</p>
-                  <a href="mailto:hello@atxbase.com" className="mt-1 block text-[15px] font-medium hover:text-white/80 transition-colors">
-                    hello@atxbase.com
+                  <p className="text-[12px] font-mono uppercase tracking-widest text-white/80">Email</p>
+                  <a href="mailto:hello@atxbase.com" className="mt-1 block text-[15px] font-medium text-white/80 transition-colors">
+                    atxbaselimited@mail.com
                   </a>
                 </li>
                 <li>
-                  <p className="text-[12px] font-mono uppercase tracking-widest text-white/40">Phone</p>
-                  <a href="tel:+8800000000" className="mt-1 block text-[15px] font-medium hover:text-white/80 transition-colors">
-                    +880 00 0000 0000
+                  <p className="text-[12px] font-mono uppercase tracking-widest text-white/80">Phone</p>
+                  <a href="tel:+8801301930846" className="mt-1 block text-[15px] font-medium text-white/80 transition-colors">
+                    +880 130 1930 846
                   </a>
                 </li>
                 <li>
-                  <p className="text-[12px] font-mono uppercase tracking-widest text-white/40">Office</p>
-                  <p className="mt-1 text-[15px] font-medium">Dhaka, Bangladesh</p>
+                  <p className="text-[12px] font-mono uppercase tracking-widest text-white/80">Office</p>
+                  <p className="mt-1 text-[15px] font-medium text-white/80 transition-colors"> Bashundhara R/A, Dhaka, Bangladesh</p>
                 </li>
                 <li>
-                  <p className="text-[12px] font-mono uppercase tracking-widest text-white/40">Hours</p>
-                  <p className="mt-1 text-[15px] font-medium">Sun – Thu, 9:00 AM – 6:00 PM</p>
+                  <p className="text-[12px] font-mono uppercase tracking-widest text-white/80">Hours</p>
+                  <p className="mt-1 text-[15px] font-medium text-white/80 transition-colors">Sun – Thu, 9:00 AM – 6:00 PM</p>
                 </li>
               </ul>
 
@@ -335,7 +333,9 @@ export default function ContactUs() {
                     key={s.label}
                     href={s.href}
                     aria-label={s.label}
-                    className="h-9 w-9 rounded-full border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:border-white/35 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-9 w-9 rounded-full border border-white/15 flex items-center justify-center text-white/80 hover:text-white hover:border-white/35 transition-colors"
                   >
                     <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
                       <path d={s.path} />

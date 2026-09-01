@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import atxBaseBackground from "./assets/atx-base-background.png";
 
 /** Brand tokens — mirror Header.jsx / Home.jsx / Footer.jsx */
 const INK = "#0a0f24";
@@ -164,12 +165,10 @@ export default function AboutUs() {
     <div className="w-full overflow-x-hidden">
       {/* ============= HERO ============= */}
       <section
-        className="relative overflow-hidden"
-        style={{
-          background: `radial-gradient(1000px 480px at 85% -10%, rgba(46,111,242,.22), transparent 60%),
-                       radial-gradient(800px 420px at 5% 110%, rgba(23,195,162,.14), transparent 55%),
-                       linear-gradient(180deg, ${INK} 0%, ${INK_2} 100%)`,
-        }}
+        className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${atxBaseBackground})`,
+          }}
       >
         <PixelTrail className="absolute top-10 right-10 hidden md:flex" />
         <div className="mx-auto max-w-4xl px-6 md:px-10 py-24 md:py-32 text-center">
@@ -335,7 +334,7 @@ export default function AboutUs() {
           <h2 className="text-white font-bold text-[26px] md:text-[36px] leading-tight">
             Want to work with our team?
           </h2>
-          <p className="mt-4 text-white/65 text-[15.5px] leading-relaxed">
+          <p className="mt-4 text-white/80 text-[15.5px] leading-relaxed">
             Tell us what you&rsquo;re building and we&rsquo;ll come back with a plan.
           </p>
           <Link
