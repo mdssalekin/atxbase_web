@@ -1,37 +1,11 @@
-/**
- * Shared data for News.jsx (the listing/filter grid) and NewsDetail.jsx
- * (the individual post page). Keeping this in one file means both pages
- * read from the same source instead of two arrays drifting apart.
- *
- * These are example posts, not real published articles — swap this array
- * for your actual blog content, ideally by eventually replacing POSTS with
- * a fetch to a real CMS/API instead of a static array.
- *
- * ---------------------------------------------------------------------
- * ADDING REAL COVER PHOTOS
- * ---------------------------------------------------------------------
- * Vite treats any imported image as a plain URL string, so you can import
- * images at the top of this file just like in a component:
- *
- *   import scalingSystemsCover from "../assets/news/designing-systems-that-scale.jpg";
- *
- * Then attach it to the matching post's `cover` field below, e.g.:
- *
- *   { slug: "designing-systems-that-scale", ..., cover: scalingSystemsCover }
- *
- * News.jsx and NewsDetail.jsx already check for `cover` and render the real
- * image when it's set, falling back to the gradient placeholder when it's
- * null — so you can add these one post at a time without breaking anything
- * in between.
- */
 
-// import scalingSystemsCover from "../assets/news/designing-systems-that-scale.jpg";
-// import aiHelpsCover from "../assets/news/where-ai-actually-helps.jpg";
-// import brandIdentityCover from "../assets/news/brand-identity-beyond-the-logo.jpg";
-// import seoBasicsCover from "../assets/news/seo-basics-that-still-matter.jpg";
-// import dashboardReadingCover from "../assets/news/reading-a-dashboard-without-a-data-team.jpg";
-// import newTeamCover from "../assets/news/atx-base-welcomes-new-team-members.jpg";
-// import nativeVsCrossCover from "../assets/news/choosing-native-vs-cross-platform.jpg";
+import scalingSystemsCover from "./assets/designing-systems-that-scale.png";
+import aiHelpsCover from "./assets/where-ai-actually-helps.png";
+// import brandIdentityCover from "./assets/brand-identity-beyond-the-logo.jpg";
+// import seoBasicsCover from "./assets/seo-basics-that-still-matter.jpg";
+// import dashboardReadingCover from "./assets/reading-a-dashboard-without-a-data-team.jpg";
+// import newTeamCover from "./assets/atx-base-welcomes-new-team-members.jpg";
+// import nativeVsCrossCover from "./assets/choosing-native-vs-cross-platform.jpg";
 
 export const CATEGORIES = ["All", "Web Development", "AI & Automation", "Design", "Marketing", "Company News"];
 
@@ -46,7 +20,7 @@ export const POSTS = [
     readMins: 6,
     author: "ATX Base Team",
     featured: true,
-    cover: null, // swap to `scalingSystemsCover` once imported above
+    cover: scalingSystemsCover,
     body: [
       "Most architecture problems don't show up on day one. They show up eighteen months later, when the thing that was supposed to be a quick internal tool is now handling real customer traffic, and every change feels riskier than the last.",
       "The decisions that matter most — how services talk to each other, where state lives, what's allowed to be tightly coupled and what isn't — get made early, often under time pressure, and rarely get revisited until something breaks.",
@@ -62,7 +36,7 @@ export const POSTS = [
     date: "2026-07-28",
     readMins: 5,
     author: "ATX Base Team",
-    cover: null, // swap to `aiHelpsCover` once imported above
+    cover: aiHelpsCover,
     body: [
       "There's a lot of pressure right now to bolt AI onto everything, whether or not it actually fits the problem. Some of that pressure produces genuinely useful automation. A lot of it produces a chatbot nobody asked for.",
       "The workflows worth automating first tend to share a few traits: they're repetitive, they're high-volume, and the cost of an occasional mistake is low and easy to catch. Ticket triage, data entry, first-pass document review — these are strong candidates.",

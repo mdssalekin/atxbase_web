@@ -132,11 +132,12 @@ const SERVICES = [
 ];
 
 const PROCESS = [
-  { n: "01", when: "Week 1", title: "Discover", desc: "We start with your goals, your users, and the constraints that matter — budget, timeline, and what \u201cdone\u201d actually looks like." },
-  { n: "02", when: "Week 2–3", title: "Design", desc: "Information architecture, UI design, and technical planning, reviewed with you before a single line of production code is written." },
-  { n: "03", when: "Sprints", title: "Build", desc: "Development in short, visible sprints across web, mobile, or desktop — with staging environments you can check in on any time." },
-  { n: "04", when: "Go-live", title: "Launch", desc: "QA across devices, performance checks, and a deployment plan that avoids surprises on release day." },
-  { n: "05", when: "Ongoing", title: "Grow", desc: "Marketing, support, and iteration once real users are in the product — because launch is the start, not the finish." },
+  { n: "01", when: "Week 1", title: "Discover", desc: "We start with your goals, your users, and the constraints that matter — budget, timeline, and what “done” actually looks like." },
+  { n: "02", when: "Week 1–2", title: "Plan", desc: "We turn the initial requirements into a clear roadmap — defining scope, priorities, technical direction, milestones, and the path from idea to execution.", },
+  { n: "03", when: "Week 2–3", title: "Design", desc: "Information architecture, UI design, and technical planning, reviewed with you before a single line of production code is written.",},
+  { n: "04", when: "Sprints", title: "Build", desc: "Development in short, visible sprints across web, mobile, or desktop — with staging environments you can check in on any time.", },
+  { n: "05", when: "Go-live", title: "Launch", desc: "QA across devices, performance checks, and a deployment plan that avoids surprises on release day.",},
+  { n: "06", when: "Ongoing", title: "Grow", desc: "Marketing, support, and iteration once real users are in the product — because launch is the start, not the finish.",},
 ];
 
 const APPROACH = [

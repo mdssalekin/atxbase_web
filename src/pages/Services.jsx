@@ -4,12 +4,12 @@ import logo from "./assets/hero 1.png";
 import atxBaseBackground from "./assets/atx-base-background.png";
 
 import webDevelopment from "./assets/web-development.png";
-import mobileDevelopment from "./assets/mobile-development.png";
+import applicationDevelopment from "./assets/application-development.png";
 import systemDesign from "./assets/system design.png";
 import aiAutomation from "./assets/ai-automation.png";
 import dataScience from "./assets/data-science.png";
 import digitalMarketing from "./assets/digital-marketing.png";
-import graphicDesign from "./assets/graphic design.png";
+import graphicDesign from "./assets/graphic-design.png";
 
 /** Brand tokens — mirror Header.jsx / Home.jsx / Footer.jsx / AboutUs.jsx / ContactUs.jsx */
 const INK = "#0a0f24";
@@ -392,10 +392,10 @@ export default function Services() {
     }
   }, [location.hash]);
 
-  const goTo = (slug) => {
-    navigate(`#${slug}`, { replace: false });
-    sectionRefs.current[slug]?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  // const goTo = (slug) => {
+  //   navigate(`#${slug}`, { replace: false });
+  //   sectionRefs.current[slug]?.scrollIntoView({ behavior: "smooth", block: "start" });
+  // };
 
   return (
     <div className="w-full overflow-x-hidden">
@@ -425,12 +425,6 @@ export default function Services() {
               Every service below is handled in-house — no outsourcing to a third agency halfway through your project. Jump to any service, or scroll through all six.
             </p>
           </Reveal>
-          {/* <img
-            src={logo}
-            alt="ATX Base"
-            className=" h-auto w-auto object-contain"
-            
-          /> */}
         </div>
       </section>
 

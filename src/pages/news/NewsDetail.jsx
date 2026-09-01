@@ -136,7 +136,7 @@ export default function NewsDetail() {
         <div className="mx-auto max-w-4xl px-6 md:px-10">
           <Reveal className="rounded-[24px] overflow-hidden border border-black/5 shadow-xl aspect-[16/9]">
             {post.cover ? (
-              <img src={post.cover} alt={post.title} className="w-full h-full object-cover" />
+              <img src={post.cover} alt={post.title} className="w-full h-full object-fit" />
             ) : (
               <CoverPlaceholder label={post.category} className="h-full" />
             )}

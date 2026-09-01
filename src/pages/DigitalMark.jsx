@@ -160,7 +160,7 @@ export default function DigitalMarketing() {
       {/* ============= WHAT WE OFFER ============= */}
       <section className="py-20 md:py-28 bg-white">
         <div className="mx-auto max-w-6xl px-6 md:px-10 grid lg:grid-cols-2 gap-14 items-center">
-          <Reveal className="flex justify-center lg:justify-start">
+          <Reveal className="rounded-[14px] overflow-hidden border border-black/5 shadow-xl">
              <img src={poster} alt="ATX Base — Digital Marketing" className="w-full h-full object-cover" />
           </Reveal>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import posterImg from "./assets/graphic design.png";
+import posterImg from "./assets/graphic-design.png";
 import atxBaseBackground from "./assets/atx-base-background.png";
 
 /** Brand tokens — mirror Header.jsx / Home.jsx / Services.jsx / Footer.jsx */
@@ -155,7 +155,7 @@ export default function GraphicDesign() {
       {/* ============= WHAT WE OFFER + POSTER ============= */}
       <section className="py-20 md:py-28 bg-white">
         <div className="mx-auto max-w-6xl px-6 md:px-10 grid lg:grid-cols-2 gap-14 items-center">
-          <Reveal className="rounded-[24px] overflow-hidden border border-black/5 shadow-xl">
+          <Reveal className="rounded-[14px] overflow-hidden border border-black/5 shadow-xl">
             <img
               src={posterImg}
               alt="ATX Base Graphic Design — brand identity, marketing and ad design, creative and modern designs, print and digital materials"
