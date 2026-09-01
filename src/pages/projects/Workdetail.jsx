@@ -128,15 +128,15 @@ export default function WorkDetail() {
 
             <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
               <div>
-                <p className="font-mono text-[11px] tracking-widest uppercase text-white/60">Client</p>
+                <p className="font-mono text-[11px] tracking-widest uppercase text-white/80">Client</p>
                 <p className="mt-1 text-[14px] font-medium text-white/80">{project.client}</p>
               </div>
               <div>
-                <p className="font-mono text-[11px] tracking-widest uppercase text-white/60">Duration</p>
+                <p className="font-mono text-[11px] tracking-widest uppercase text-white/80">Duration</p>
                 <p className="mt-1 text-[14px] font-medium text-white/80">{project.duration}</p>
               </div>
               <div>
-                <p className="font-mono text-[11px] tracking-widest uppercase text-white/60">Year</p>
+                <p className="font-mono text-[11px] tracking-widest uppercase text-white/80">Year</p>
                 <p className="mt-1 text-[14px] font-medium text-white/80">{project.year}</p>
               </div>
             </div>

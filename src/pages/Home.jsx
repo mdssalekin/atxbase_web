@@ -234,9 +234,9 @@ export default function Home() {
               >
                 <div className="relative overflow-hidden rounded-[22px]">
                   <img
-                    src= {homeFirst}
+                    src={homeFirst}
                     alt="ATX Base technology environment"
-                    className="block w-full h-[560px] object-cover object-center"
+                    className="block w-full h-auto aspect-[11/14] object-cover object-center"
                   />
 
                   {/* Subtle gradient overlay */}
@@ -401,7 +401,7 @@ export default function Home() {
 
             {/* RIGHT — IMAGE */}
             <Reveal className="relative lg:sticky lg:top-28">
-              <div className="relative mx-auto w-full max-w-[500px]">
+              <div className="relative mx-auto w-full max-w-[380px] sm:max-w-[440px] lg:max-w-[500px] xl:max-w-[560px]">
 
                 {/* Ambient glow */}
                 <div
@@ -439,7 +439,7 @@ export default function Home() {
                     <img
                       src={homeSecond}
                       alt="ATX Base technology and digital development"
-                      className="block w-full h-[560px] xl:h-[620px] object-cover object-center"
+                      className="block w-full h-auto aspect-[5/6] object-cover object-center"
                     />
 
                     {/* Dark cinematic overlay */}
