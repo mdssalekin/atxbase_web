@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "./assets/hero 1.png";
 import atxBaseBackground from "./assets/atx-base-background.png";
 
 import webDevelopment from "./assets/web-development.png";
 import applicationDevelopment from "./assets/application-development.png";
-import systemDesign from "./assets/system design.png";
+import systemDesign from "./assets/system-design.png";
 import aiAutomation from "./assets/ai-automation.png";
 import dataScience from "./assets/data-science.png";
 import digitalMarketing from "./assets/digital-marketing.png";
@@ -96,7 +95,8 @@ const Check = () => (
 );
 
 /* ---------------------------------------------------------------- */
-/*  Per-service icon glyphs — plain inline SVG, no icon library      */
+/*  Per-service icon glyphs — used ONLY as a fallback if a section's  */
+/*  `image` is ever missing, so a broken import can't blank a card.  */
 /* ---------------------------------------------------------------- */
 
 const ICONS = {
@@ -108,23 +108,27 @@ const ICONS = {
       <circle cx="10" cy="7.7" r="0.9" fill="white" stroke="none" />
     </g>
   ),
-  webapp: (
+  app: (
     <g fill="none" stroke="white" strokeWidth="1.6">
       <rect x="4" y="4" width="24" height="24" rx="3" />
       <path d="M4 12h24M12 12v16" />
     </g>
   ),
-  android: (
-    <g fill="none" stroke="white" strokeWidth="1.6">
-      <rect x="9" y="3" width="14" height="26" rx="3.5" />
-      <path d="M9 8h14M9 24h14" />
-      <circle cx="16" cy="26.3" r="0.9" fill="white" stroke="none" />
-    </g>
-  ),
-  windows: (
+  system: (
     <g fill="none" stroke="white" strokeWidth="1.6">
       <rect x="4" y="4" width="24" height="24" rx="3" />
       <path d="M16 4v24M4 16h24" />
+    </g>
+  ),
+  ai: (
+    <g fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="9" y="9" width="14" height="14" rx="3" />
+      <path d="M16 3v6M16 23v6M3 16h6M23 16h6" />
+    </g>
+  ),
+  data: (
+    <g fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 20V10M11 20V4M18 20v-7" />
     </g>
   ),
   marketing: (
@@ -144,23 +148,31 @@ const ICONS = {
   ),
 };
 
-const ServiceVisual = ({ kind }) => (
+// Shows the real photo when `image` is set; falls back to the icon plate
+// (instead of a broken <img>) if it's ever missing.
+const ServiceVisual = ({ kind, image, alt }) => (
   <div
     className="relative w-full max-w-[380px] aspect-[4/3] rounded-[26px] border border-white/10 flex items-center justify-center overflow-hidden shadow-xl"
     style={{ background: `linear-gradient(155deg, ${INK} 0%, ${INK_2} 100%)` }}
   >
-    <div
-      className="absolute -top-10 -right-10 h-40 w-40 rounded-full blur-2xl opacity-40"
-      style={{ background: GRADIENT }}
-    />
-    <div
-      className="relative h-20 w-20 rounded-2xl flex items-center justify-center"
-      style={{ background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.12)" }}
-    >
-      <svg viewBox="0 0 32 32" className="h-10 w-10">
-        {ICONS[kind]}
-      </svg>
-    </div>
+    {image ? (
+      <img src={image} alt={alt} className="w-full h-full object-fit" />
+    ) : (
+      <>
+        <div
+          className="absolute -top-10 -right-10 h-40 w-40 rounded-full blur-2xl opacity-40"
+          style={{ background: GRADIENT }}
+        />
+        <div
+          className="relative h-20 w-20 rounded-2xl flex items-center justify-center"
+          style={{ background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.12)" }}
+        >
+          <svg viewBox="0 0 32 32" className="h-10 w-10">
+            {ICONS[kind]}
+          </svg>
+        </div>
+      </>
+    )}
   </div>
 );
 
@@ -184,12 +196,12 @@ const SERVICES = [
       "SEO-friendly structure, performance, and accessibility",
       "CMS setup so your team can manage content independently",
     ],
-    stack: [
-      "React / Next.js",
-      "WordPress",
-      "Shopify",
-      "Webflow",
-    ],
+    stack: ["React / Next.js", "WordPress", "Shopify", "Webflow"],
+    image: webDevelopment,
+    imgAlt: "ATX Base web development",
+    // No dedicated route exists for this one yet in App.jsx — falls back
+    // to the contact page. Point this at a real route once one exists.
+    route: "/services/application-development",
   },
   {
     slug: "application-development",
@@ -206,13 +218,10 @@ const SERVICES = [
       "Authentication, permissions, APIs, and third-party integrations",
       "Deployment, monitoring, maintenance, and ongoing support",
     ],
-    stack: [
-      "React",
-      "Node.js",
-      "Kotlin / React Native",
-      ".NET / C#",
-      "PostgreSQL / SQL Server",
-    ],
+    stack: ["React", "Node.js", "Kotlin / React Native", ".NET / C#", "PostgreSQL / SQL Server"],
+    image: applicationDevelopment,
+    imgAlt: "ATX Base application development",
+    route: "/services/application-development",
   },
   {
     slug: "system-design",
@@ -229,16 +238,13 @@ const SERVICES = [
       "API architecture and third-party system integration",
       "Cloud infrastructure, security, monitoring, and reliability planning",
     ],
-    stack: [
-      "AWS / GCP",
-      "Node.js",
-      "PostgreSQL",
-      "Docker",
-      "REST / GraphQL",
-    ],
+    stack: ["AWS / GCP", "Node.js", "PostgreSQL", "Docker", "REST / GraphQL"],
+    image: systemDesign,
+    imgAlt: "ATX Base system design",
+    route: "/services/system-design",
   },
   {
-    slug: "ai-automation",
+    slug: "ai-&-automation",
     tag: "AI",
     kind: "ai",
     title: "AI & Automation",
@@ -252,21 +258,17 @@ const SERVICES = [
       "Document, text, and data processing",
       "AI integration with existing software, APIs, and internal systems",
     ],
-    stack: [
-      "OpenAI APIs",
-      "Python",
-      "Node.js",
-      "LangChain",
-      "Automation Platforms",
-    ],
+    stack: ["OpenAI APIs", "Python", "Node.js", "LangChain", "Automation Platforms"],
+    image: aiAutomation,
+    imgAlt: "ATX Base AI and automation",
+    route: "/services/ai-&-automation",
   },
   {
     slug: "data-science",
     tag: "DATA",
     kind: "data",
     title: "Data Science",
-    tagline:
-      "Turn complex data into actionable insights, predictions, and better decisions.",
+    tagline: "Turn complex data into actionable insights, predictions, and better decisions.",
     description:
       "We transform raw data into useful intelligence through analysis, visualization, statistical modeling, and machine learning — helping teams understand what is happening and make better decisions about what comes next.",
     features: [
@@ -275,22 +277,17 @@ const SERVICES = [
       "Predictive analytics and machine learning models",
       "Data pipelines and automated reporting",
     ],
-    stack: [
-      "Python",
-      "Pandas",
-      "NumPy",
-      "Scikit-learn",
-      "SQL",
-      "Power BI",
-    ],
+    stack: ["Python", "Pandas", "NumPy", "Scikit-learn", "SQL", "Power BI"],
+    image: dataScience,
+    imgAlt: "ATX Base data science",
+    route: "/services/data-science",
   },
   {
     slug: "digital-marketing",
     tag: "MKT",
     kind: "marketing",
     title: "Digital Marketing",
-    tagline:
-      "SEO, paid campaigns, and content strategy that turn traffic into measurable growth.",
+    tagline: "SEO, paid campaigns, and content strategy that turn traffic into measurable growth.",
     description:
       "We help businesses reach the right audience through search, social, paid advertising, and content. Every campaign is guided by clear objectives, transparent reporting, and measurable business outcomes.",
     features: [
@@ -299,21 +296,17 @@ const SERVICES = [
       "Content strategy and editorial planning",
       "Analytics and reporting focused on leads, conversions, and ROI",
     ],
-    stack: [
-      "Google Ads",
-      "Meta Ads",
-      "LinkedIn Ads",
-      "Google Analytics",
-      "SEMrush",
-    ],
+    stack: ["Google Ads", "Meta Ads", "LinkedIn Ads", "Google Analytics", "SEMrush"],
+    image: digitalMarketing,
+    imgAlt: "ATX Base digital marketing",
+    route: "/services/digital-marketing",
   },
   {
     slug: "graphic-design",
     tag: "DES",
     kind: "design",
     title: "Graphic Design",
-    tagline:
-      "Brand identities and visual systems that stay consistent across every touchpoint.",
+    tagline: "Brand identities and visual systems that stay consistent across every touchpoint.",
     description:
       "We create visual identities and design systems that make businesses recognizable and products easier to use. From branding and UI/UX to marketing materials, every element is designed to work together.",
     features: [
@@ -322,12 +315,10 @@ const SERVICES = [
       "Social media, presentations, advertising, and print materials",
       "Design systems and reusable component libraries",
     ],
-    stack: [
-      "Figma",
-      "Adobe Illustrator",
-      "Adobe Photoshop",
-      "After Effects",
-    ],
+    stack: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "After Effects"],
+    image: graphicDesign,
+    imgAlt: "ATX Base graphic design",
+    route: "/services/graphic-design",
   },
 ];
 
@@ -409,7 +400,7 @@ export default function Services() {
         }}
       >
         <PixelTrail className="absolute top-10 right-10 hidden md:flex" />
-        <div className="mx-auto max-w-3xl px-6 md:px-10 py-20 md:py-28 text-center" style={{ backgroundImage: "url('assets/hero 1.png')", backgroundSize: "cover" }}>
+        <div className="mx-auto max-w-3xl px-6 md:px-10 py-20 md:py-28 text-center">
           <Reveal>
             <div className="flex justify-center">
               <Eyebrow tone="dark">What we build</Eyebrow>
@@ -445,7 +436,7 @@ export default function Services() {
             <div className="mx-auto max-w-6xl px-6 md:px-10">
               <div className={`grid lg:grid-cols-2 gap-12 items-center ${flip ? "lg:[&>*:first-child]:order-2" : ""}`}>
                 <Reveal className="flex justify-center lg:justify-start">
-                  <ServiceVisual kind={s.kind} />
+                  <ServiceVisual kind={s.kind} image={s.image} alt={s.imgAlt} />
                 </Reveal>
 
                 <Reveal style={{ transitionDelay: "80ms" }}>
@@ -485,11 +476,11 @@ export default function Services() {
                   </div>
 
                   <Link
-                    to="/contact-us"
+                    to={s.route}
                     className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px] font-semibold text-white shadow-md transition-transform hover:-translate-y-0.5"
                     style={{ background: GRADIENT }}
                   >
-                    Talk about {s.title.split(" ")[0]}
+                    Learn more about {s.title.split(" ")[0]}
                   </Link>
                 </Reveal>
               </div>
@@ -508,7 +499,7 @@ export default function Services() {
           <h2 className="text-white font-bold text-[26px] md:text-[36px] leading-tight">
             Not sure which service you need?
           </h2>
-          <p className="mt-4 text-white/65 text-[15.5px] leading-relaxed">
+          <p className="mt-4 text-white/80 text-[15.5px] leading-relaxed">
             Tell us what you&rsquo;re trying to build — we&rsquo;ll tell you which of these actually applies.
           </p>
           <Link

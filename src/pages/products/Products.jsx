@@ -221,7 +221,7 @@ export default function Products() {
           <h2 className="mt-5 text-white font-bold text-[26px] md:text-[36px] leading-tight">
             Want to see one of these in action?
           </h2>
-          <p className="mt-4 text-white/65 text-[15.5px] leading-relaxed">
+          <p className="mt-4 text-white/80 text-[15.5px] leading-relaxed">
             Reach out and we&rsquo;ll walk you through a demo, or talk through custom work if none of these quite fit.
           </p>
           <Link

@@ -1,11 +1,11 @@
 
 import scalingSystemsCover from "./assets/designing-systems-that-scale.png";
 import aiHelpsCover from "./assets/where-ai-actually-helps.png";
-// import brandIdentityCover from "./assets/brand-identity-beyond-the-logo.jpg";
-// import seoBasicsCover from "./assets/seo-basics-that-still-matter.jpg";
-// import dashboardReadingCover from "./assets/reading-a-dashboard-without-a-data-team.jpg";
-// import newTeamCover from "./assets/atx-base-welcomes-new-team-members.jpg";
-// import nativeVsCrossCover from "./assets/choosing-native-vs-cross-platform.jpg";
+import brandIdentityCover from "./assets/brand-identity-beyond-the-logo.png";
+import seoBasicsCover from "./assets/seo-basics-that-still-matter.png";
+import dashboardReadingCover from "./assets/reading-a-dashboard-without-a-data-team.png";
+import newTeamCover from "./assets/atx-base-welcomes-new-team-members.png";
+// import nativeVsCrossCover from "./assets/choosing-native-vs-cross-platform.png";
 
 export const CATEGORIES = ["All", "Web Development", "AI & Automation", "Design", "Marketing", "Company News"];
 
@@ -52,7 +52,7 @@ export const POSTS = [
     date: "2026-07-15",
     readMins: 4,
     author: "ATX Base Team",
-    cover: null, // swap to `brandIdentityCover` once imported above
+    cover: brandIdentityCover,
     body: [
       "A logo is the easy part. The hard part is everything that has to work consistently around it — color usage across light and dark backgrounds, type scales that hold up on a phone screen and a banner ad, spacing rules that keep a design from feeling cramped or hollow.",
       "Most of the brand problems we get called in to fix aren't 'the logo looks dated.' They're 'nothing matches anymore,' because five different people made five reasonable-looking decisions with no shared system to check them against.",
@@ -67,7 +67,7 @@ export const POSTS = [
     date: "2026-06-30",
     readMins: 7,
     author: "ATX Base Team",
-    cover: null, // swap to `seoBasicsCover` once imported above
+    cover: seoBasicsCover,
     body: [
       "Search algorithms change constantly, and it's easy to treat SEO as a moving target not worth chasing. In practice, the fundamentals that mattered five years ago mostly still matter: fast pages, clear structure, content that actually answers the question someone typed in.",
       "What's changed is how forgiving search engines are of skipping those fundamentals. There's less tolerance now for slow pages, thin content, and structure that exists to game rankings rather than help a reader.",
@@ -82,7 +82,7 @@ export const POSTS = [
     date: "2026-06-18",
     readMins: 5,
     author: "ATX Base Team",
-    cover: null, // swap to `dashboardReadingCover` once imported above
+    cover: dashboardReadingCover,
     body: [
       "A dashboard full of charts isn't the same thing as a dashboard full of useful information. It's easy to end up staring at a dozen metrics without a clear sense of which ones actually predict trouble or opportunity ahead of time.",
       "The most useful metrics tend to be leading indicators, not lagging ones — signals that move before revenue does, not after. Cart abandonment ahead of a sales dip. Support ticket volume ahead of a churn spike.",
@@ -97,7 +97,7 @@ export const POSTS = [
     date: "2026-06-02",
     readMins: 2,
     author: "ATX Base Team",
-    cover: null, // swap to `newTeamCover` once imported above
+    cover: newTeamCover,
     body: [
       "As our project load has grown, so has the team behind it. Over the past quarter we've added new engineers and designers across web, mobile, and design — all people who care about the same thing we do: shipping work we're willing to put our name on.",
       "Replace this post with real introductions once you're ready — names, roles, a line or two about what each person is working on. Company update posts like this one are some of the easiest to keep current, and readers tend to like seeing the humans behind the work.",
