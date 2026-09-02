@@ -185,7 +185,7 @@ export default function NewsDetail() {
                 >
                   <div className="h-36">
                     {p.cover ? (
-                      <img src={p.cover} alt={p.title} className="w-full h-full object-cover" />
+                      <img src={p.cover} alt={p.title} className="w-full h-full object-fit" />
                     ) : (
                       <CoverPlaceholder label={p.category} className="h-full" />
                     )}

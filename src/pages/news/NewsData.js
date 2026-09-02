@@ -5,7 +5,7 @@ import brandIdentityCover from "./assets/brand-identity-beyond-the-logo.png";
 import seoBasicsCover from "./assets/seo-basics-that-still-matter.png";
 import dashboardReadingCover from "./assets/reading-a-dashboard-without-a-data-team.png";
 import newTeamCover from "./assets/atx-base-welcomes-new-team-members.png";
-// import nativeVsCrossCover from "./assets/choosing-native-vs-cross-platform.png";
+import nativeVsCrossCover from "./assets/choosing-native-vs-cross-platform.png";
 
 export const CATEGORIES = ["All", "Web Development", "AI & Automation", "Design", "Marketing", "Company News"];
 
@@ -111,7 +111,7 @@ export const POSTS = [
     date: "2026-05-21",
     readMins: 6,
     author: "ATX Base Team",
-    cover: null, // swap to `nativeVsCrossCover` once imported above
+    cover: nativeVsCrossCover,
     body: [
       "This question comes up on almost every mobile project, and the honest answer is that there's no universally correct choice — it depends on the app, the timeline, and what happens after launch.",
       "Native tends to win when performance is central to the product, or when the app needs deep access to platform-specific features that cross-platform frameworks handle awkwardly. Cross-platform tends to win when speed to market matters more, or when the team maintaining the app afterward is small.",
