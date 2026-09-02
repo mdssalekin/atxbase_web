@@ -98,7 +98,7 @@ export const CoverPlaceholder = ({ label, className = "" }) => (
 // Renders the real cover image when a post has one, otherwise the placeholder.
 const Cover = ({ post, className = "" }) =>
   post.cover ? (
-    <img src={post.cover} alt={post.title} className={`w-full h-full object-cover ${className}`} />
+    <img src={post.cover} alt={post.title} className={`w-full h-full object-fit ${className}`} />
   ) : (
     <CoverPlaceholder label={post.category} className={className} />
   );
