@@ -26,7 +26,7 @@ const SERVICE_LINKS = [
 const COMPANY_LINKS = [
   { label: "Home", path: "/home" },
   { label: "About Us", path: "/about-us" },
-  { label: "Products", path: "/products" },
+  // { label: "Products", path: "/products" },
   { label: "Works", path: "/works" },
   { label: "News", path: "/news" },
   { label: "Contact Us", path: "/contact-us" },
