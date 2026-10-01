@@ -20,8 +20,8 @@ import Workdetail from './pages/projects/Workdetail';
 import News from './pages/News';
 import NewsDetail from './pages/news/NewsDetail';
 
-import Products from './pages/products/Products';
-import ProductDetails from './pages/products/ProductDetails';
+// import Products from './pages/products/Products';
+// import ProductDetails from './pages/products/ProductDetails';
 
 function App() {
   return (
@@ -42,8 +42,8 @@ function App() {
           <Route path='/works' element={<Works />} />
           <Route path="/works/:slug" element={<Workdetail />} />
           
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:slug" element={<ProductDetails />} />
+          {/* <Route path="/products" element={<Products />} />
+          <Route path="/products/:slug" element={<ProductDetails />} /> */}
 
 
           <Route path="/services" element={<Services />} />
